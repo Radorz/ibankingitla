@@ -1,0 +1,388 @@
+create database Ibanking
+go
+USE [Ibanking]
+GO
+
+
+
+CREATE TABLE [dbo].[AspNetRoleClaims](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[RoleId] [nvarchar](450) NOT NULL,
+	[ClaimType] [nvarchar](max) NULL,
+	[ClaimValue] [nvarchar](max) NULL,
+ CONSTRAINT [PK_AspNetRoleClaims] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[AspNetRoleClaims]  WITH CHECK ADD  CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId] FOREIGN KEY([RoleId])
+REFERENCES [dbo].[AspNetRoles] ([Id])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[AspNetRoleClaims] CHECK CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId]
+GO
+
+
+
+CREATE TABLE [dbo].[AspNetRoles](
+	[Id] [nvarchar](450) NOT NULL,
+	[Name] [nvarchar](256) NULL,
+	[NormalizedName] [nvarchar](256) NULL,
+	[ConcurrencyStamp] [nvarchar](max) NULL,
+ CONSTRAINT [PK_AspNetRoles] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+CREATE TABLE [dbo].[AspNetUserClaims](
+	[Id] [int] IDENTITY(1,1) NOT NULL,
+	[UserId] [nvarchar](450) NOT NULL,
+	[ClaimType] [nvarchar](max) NULL,
+	[ClaimValue] [nvarchar](max) NULL,
+ CONSTRAINT [PK_AspNetUserClaims] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[AspNetUserClaims]  WITH CHECK ADD  CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[AspNetUsers] ([Id])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[AspNetUserClaims] CHECK CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId]
+GO
+
+
+CREATE TABLE [dbo].[AspNetUserLogins](
+	[LoginProvider] [nvarchar](450) NOT NULL,
+	[ProviderKey] [nvarchar](450) NOT NULL,
+	[ProviderDisplayName] [nvarchar](max) NULL,
+	[UserId] [nvarchar](450) NOT NULL,
+ CONSTRAINT [PK_AspNetUserLogins] PRIMARY KEY CLUSTERED 
+(
+	[LoginProvider] ASC,
+	[ProviderKey] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[AspNetUserLogins]  WITH CHECK ADD  CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[AspNetUsers] ([Id])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[AspNetUserLogins] CHECK CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId]
+GO
+
+
+CREATE TABLE [dbo].[AspNetUserRoles](
+	[UserId] [nvarchar](450) NOT NULL,
+	[RoleId] [nvarchar](450) NOT NULL,
+ CONSTRAINT [PK_AspNetUserRoles] PRIMARY KEY CLUSTERED 
+(
+	[UserId] ASC,
+	[RoleId] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[AspNetUserRoles]  WITH CHECK ADD  CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId] FOREIGN KEY([RoleId])
+REFERENCES [dbo].[AspNetRoles] ([Id])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[AspNetUserRoles] CHECK CONSTRAINT [FK_AspNetUserRoles_AspNetRoles_RoleId]
+GO
+
+ALTER TABLE [dbo].[AspNetUserRoles]  WITH CHECK ADD  CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[AspNetUsers] ([Id])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[AspNetUserRoles] CHECK CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId]
+GO
+
+
+CREATE TABLE [dbo].[AspNetUsers](
+	[Id] [nvarchar](450) NOT NULL,
+	[UserName] [nvarchar](256) NULL,
+	[NormalizedUserName] [nvarchar](256) NULL,
+	[Email] [nvarchar](256) NULL,
+	[NormalizedEmail] [nvarchar](256) NULL,
+	[EmailConfirmed] [bit] NOT NULL,
+	[PasswordHash] [nvarchar](max) NULL,
+	[SecurityStamp] [nvarchar](max) NULL,
+	[ConcurrencyStamp] [nvarchar](max) NULL,
+	[PhoneNumber] [nvarchar](max) NULL,
+	[PhoneNumberConfirmed] [bit] NOT NULL,
+	[TwoFactorEnabled] [bit] NOT NULL,
+	[LockoutEnd] [datetimeoffset](7) NULL,
+	[LockoutEnabled] [bit] NOT NULL,
+	[AccessFailedCount] [int] NOT NULL,
+ CONSTRAINT [PK_AspNetUsers] PRIMARY KEY CLUSTERED 
+(
+	[Id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+
+CREATE TABLE [dbo].[AspNetUserTokens](
+	[UserId] [nvarchar](450) NOT NULL,
+	[LoginProvider] [nvarchar](450) NOT NULL,
+	[Name] [nvarchar](450) NOT NULL,
+	[Value] [nvarchar](max) NULL,
+ CONSTRAINT [PK_AspNetUserTokens] PRIMARY KEY CLUSTERED 
+(
+	[UserId] ASC,
+	[LoginProvider] ASC,
+	[Name] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[AspNetUserTokens]  WITH CHECK ADD  CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId] FOREIGN KEY([UserId])
+REFERENCES [dbo].[AspNetUsers] ([Id])
+ON DELETE CASCADE
+GO
+
+ALTER TABLE [dbo].[AspNetUserTokens] CHECK CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId]
+GO
+
+
+CREATE TABLE [dbo].[Pagos](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Fecha] [date] NULL,
+	[ProductoOrigen] [nchar](450) NULL,
+	[ProductoDestino] [nchar](450) NULL,
+	[Monto] [decimal](19, 2) NULL,
+	[TipoProducto] [int] NULL,
+ CONSTRAINT [PK_Pagos] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Pagos]  WITH CHECK ADD  CONSTRAINT [FK_Pagos_ProductosUsers] FOREIGN KEY([ProductoOrigen])
+REFERENCES [dbo].[ProductosUsers] ([id])
+GO
+
+ALTER TABLE [dbo].[Pagos] CHECK CONSTRAINT [FK_Pagos_ProductosUsers]
+GO
+
+ALTER TABLE [dbo].[Pagos]  WITH CHECK ADD  CONSTRAINT [FK_Pagos_TiposProductos] FOREIGN KEY([TipoProducto])
+REFERENCES [dbo].[TiposProductos] ([id])
+GO
+
+ALTER TABLE [dbo].[Pagos] CHECK CONSTRAINT [FK_Pagos_TiposProductos]
+GO
+
+ALTER TABLE [dbo].[Pagos]  WITH CHECK ADD  CONSTRAINT [FK_Table_1_ProductosUsersDestino] FOREIGN KEY([ProductoDestino])
+REFERENCES [dbo].[ProductosUsers] ([id])
+GO
+
+ALTER TABLE [dbo].[Pagos] CHECK CONSTRAINT [FK_Table_1_ProductosUsersDestino]
+GO
+
+
+CREATE TABLE [dbo].[ProductosUsers](
+	[id] [nchar](450) NOT NULL,
+	[idusuario] [nvarchar](450) NOT NULL,
+	[idtipo] [int] NOT NULL,
+ CONSTRAINT [PK_ProductosUsers] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[ProductosUsers]  WITH CHECK ADD  CONSTRAINT [FK_ProductosUsers_TiposProductos] FOREIGN KEY([idtipo])
+REFERENCES [dbo].[TiposProductos] ([id])
+GO
+
+ALTER TABLE [dbo].[ProductosUsers] CHECK CONSTRAINT [FK_ProductosUsers_TiposProductos]
+GO
+
+ALTER TABLE [dbo].[ProductosUsers]  WITH CHECK ADD  CONSTRAINT [FK_ProductosUsers_Users] FOREIGN KEY([idusuario])
+REFERENCES [dbo].[Users] ([id])
+GO
+
+ALTER TABLE [dbo].[ProductosUsers] CHECK CONSTRAINT [FK_ProductosUsers_Users]
+GO
+
+CREATE TABLE [dbo].[TiposProductos](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[NombreProducto] [nchar](200) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+CREATE TABLE [dbo].[Transacciones](
+	[id] [int] IDENTITY(1,1) NOT NULL,
+	[Fecha] [date] NULL,
+	[Cuentaorigen] [nchar](450) NULL,
+	[Cuentadestino] [nchar](450) NULL,
+	[Monto] [decimal](19, 2) NULL,
+ CONSTRAINT [PK_Transacciones] PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+ALTER TABLE [dbo].[Transacciones]  WITH CHECK ADD  CONSTRAINT [FK_Transacciones_ProductosUsers] FOREIGN KEY([Cuentadestino])
+REFERENCES [dbo].[ProductosUsers] ([id])
+GO
+
+ALTER TABLE [dbo].[Transacciones] CHECK CONSTRAINT [FK_Transacciones_ProductosUsers]
+GO
+
+ALTER TABLE [dbo].[Transacciones]  WITH CHECK ADD  CONSTRAINT [FK_Transacciones_ProductosUsersorigen] FOREIGN KEY([Cuentaorigen])
+REFERENCES [dbo].[ProductosUsers] ([id])
+GO
+
+ALTER TABLE [dbo].[Transacciones] CHECK CONSTRAINT [FK_Transacciones_ProductosUsersorigen]
+GO
+
+
+CREATE TABLE [dbo].[Users](
+	[id] [nvarchar](450) NOT NULL,
+	[Nombre] [nchar](100) NULL,
+	[Apellido] [nchar](100) NULL,
+	[Usuario] [nchar](50) NULL,
+	[Cedula] [nchar](15) NULL,
+	[Correo] [nchar](50) NULL,
+	[Contraseña] [nchar](50) NULL,
+	[Tipo] [nchar](10) NULL,
+	[Estado] [nchar](10) NULL,
+PRIMARY KEY CLUSTERED 
+(
+	[id] ASC
+)WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
+) ON [PRIMARY]
+GO
+
+
+USE [Ibanking]
+GO
+
+INSERT INTO [dbo].[AspNetUsers]
+           ([Id]
+           ,[UserName]
+           ,[NormalizedUserName]
+           ,[Email]
+           ,[NormalizedEmail]
+           ,[EmailConfirmed]
+           ,[PasswordHash]
+           ,[SecurityStamp]
+           ,[ConcurrencyStamp]
+           ,[PhoneNumber]
+           ,[PhoneNumberConfirmed]
+           ,[TwoFactorEnabled]
+           ,[LockoutEnd]
+           ,[LockoutEnabled]
+           ,[AccessFailedCount])
+     VALUES
+           ('3ec65ee1-a8a9-437e-92b2-6b723f89b93f'
+           ,'cocacola'
+           ,'COCACOLA'
+           ,'vid2perfecta@gmail.com'
+           ,'VID2PERFECTA@GMAIL.COM'
+           ,0
+           ,'AQAAAAEAACcQAAAAEPCurO7e/oN1jyZ8yaUrIHC5sV3U7un9fQSwYoXmcWsmGCSnj2jQwsLvFyTbbpTIXg=='
+           ,'E2SGFRLYA3VPRTQXGWN6NGZMPPXPKPTL'
+           ,'696bf8ca-3529-49f0-af95-d365d46ff730'
+           ,NULL
+           ,0
+           ,0
+           ,NULL
+           ,1
+           ,0)
+GO
+
+
+
+USE [Ibanking]
+GO
+
+
+USE [Ibanking]
+GO
+
+INSERT INTO [dbo].[AspNetRoles]
+           ([Id]
+           ,[Name]
+           ,[NormalizedName]
+           ,[ConcurrencyStamp])
+     VALUES
+           ('1'
+           ,'admin'
+           ,'Admin'
+           ,null)
+GO
+
+USE [Ibanking]
+GO
+
+INSERT INTO [dbo].[AspNetRoles]
+           ([Id]
+           ,[Name]
+           ,[NormalizedName]
+           ,[ConcurrencyStamp])
+     VALUES
+           ('2'
+           ,'cliente'
+           ,'Cliente'
+           ,null)
+GO
+
+
+USE [Ibanking]
+GO
+
+INSERT INTO [dbo].[AspNetUserRoles]
+           ([UserId]
+           ,[RoleId])
+     VALUES
+           ('3ec65ee1-a8a9-437e-92b2-6b723f89b93f'
+           ,'1')
+GO
+
+USE [Ibanking]
+GO
+
+INSERT INTO [dbo].[Users]
+           ([id]
+           ,[Nombre]
+           ,[Apellido]
+           ,[Usuario]
+           ,[Cedula]
+           ,[Correo]
+           ,[Contraseña]
+           ,[Tipo]
+           ,[Estado])
+     VALUES
+           ('3ec65ee1-a8a9-437e-92b2-6b723f89b93f'
+           ,'Prueba'
+           ,'Nueva'
+           ,'cocacola'
+           ,'82984579101'
+           ,'vid2perfecta@gmail.com'
+           ,'123456'
+           ,'admin'
+           ,'Activo')
+GO
+
+
