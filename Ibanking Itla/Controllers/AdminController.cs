@@ -71,6 +71,7 @@ namespace Ibanking_Itla.Controllers
                 var usuarioentity = _mapper.Map<Users>(vm);
                 usuarioentity.Tipo = vm.RoleSelect;
                 usuarioentity.Estado = "Activo";
+                usuarioentity.Id = user.Id;
                 var user12 = await _repository.GetAll();
                 var resul12 = user12.FirstOrDefault(a => a.Usuario.Trim() == usuarioentity.Usuario.Trim());
 

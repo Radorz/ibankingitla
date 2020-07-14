@@ -17,7 +17,6 @@
                 <thead class="thead-dark">
 
                     <tr>
-                        <th scope="col">Id</th>
                         <th scope="col">Nombre</th>
                         <th scope="col">Apellido</th>
                         <th scope="col">Usuario</th>
@@ -34,7 +33,6 @@
                     {
                         @if (item.Tipo.Trim() == "admin")
                         {<tr class="bg-info">
-    <td>@Html.DisplayFor(modelItem => item.Id)</td>
     <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
     <td>@Html.DisplayFor(modelItem => item.Apellido)</td>
     <td>@Html.DisplayFor(modelItem => item.Usuario)</td>
@@ -61,7 +59,6 @@
                         else
                         {
                 <tr>
-                    <td>@Html.DisplayFor(modelItem => item.Id)</td>
                     <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
                     <td>@Html.DisplayFor(modelItem => item.Apellido)</td>
                     <td>@Html.DisplayFor(modelItem => item.Usuario)</td>
