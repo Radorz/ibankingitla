@@ -1,0 +1,102 @@
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\appsettings.Development.json
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\appsettings.json
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Properties\launchSettings.json
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Ibanking Itla.exe
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Ibanking Itla.deps.json
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Ibanking Itla.runtimeconfig.json
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Ibanking Itla.runtimeconfig.dev.json
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Ibanking Itla.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Ibanking Itla.pdb
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Ibanking Itla.Views.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Ibanking Itla.Views.pdb
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Ibanking Itla.csprojAssemblyReference.cache
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Ibanking Itla.AssemblyInfoInputs.cache
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Ibanking Itla.AssemblyInfo.cs
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Ibanking Itla.csproj.CoreCompileInputs.cache
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Ibanking Itla.MvcApplicationPartsAssemblyInfo.cache
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Ibanking Itla.RazorAssemblyInfo.cache
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Ibanking Itla.RazorAssemblyInfo.cs
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Ibanking Itla.TagHelpers.input.cache
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Ibanking Itla.TagHelpers.output.cache
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Ibanking Itla.RazorCoreGenerate.cache
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Razor\Views\Home\Index.cshtml.g.cs
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Razor\Views\Home\Privacy.cshtml.g.cs
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Razor\Views\Shared\Error.cshtml.g.cs
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_Layout.cshtml.g.cs
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ValidationScriptsPartial.cshtml.g.cs
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Razor\Views\_ViewImports.cshtml.g.cs
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Razor\Views\_ViewStart.cshtml.g.cs
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Ibanking Itla.RazorTargetAssemblyInfo.cache
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Ibanking Itla.RazorTargetAssemblyInfo.cs
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Ibanking Itla.Views.pdb
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\staticwebassets\Ibanking Itla.StaticWebAssets.Manifest.cache
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\staticwebassets\Ibanking Itla.StaticWebAssets.xml
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Ibanking Itla.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Ibanking Itla.pdb
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Ibanking Itla.genruntimeconfig.cache
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Ibanking Itla.csproj.CopyComplete
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LoginLayout.cshtml.g.cs
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Index.cshtml.g.cs
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_AdminLayout.cshtml.g.cs
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Management.cshtml.g.cs
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Create.cshtml.g.cs
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Razor\Views\Admin\Edit.cshtml.g.cs
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Razor\Views\Cliente\Index.cshtml.g.cs
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_ClienteLayout.cshtml.g.cs
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Razor\Views\Cliente\PagoExpress.cshtml.g.cs
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Razor\Views\Cliente\Confirmacion.cshtml.g.cs
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Razor\Views\Cliente\TarjetaCredito.cshtml.g.cs
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Razor\Views\Shared\PagoPrestamo.cshtml.g.cs
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Razor\Views\Cliente\PagoBeneficiario.cshtml.g.cs
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Razor\Views\Cliente\Beneficiarios.cshtml.g.cs
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.Internal.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Cryptography.KeyDerivation.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.Identity.EntityFrameworkCore.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Microsoft.Bcl.AsyncInterfaces.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Microsoft.Bcl.HashCode.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Microsoft.Data.SqlClient.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Abstractions.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.Relational.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Microsoft.EntityFrameworkCore.SqlServer.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Abstractions.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Caching.Memory.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Abstractions.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Configuration.Binder.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyInjection.Abstractions.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Core.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Identity.Stores.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Logging.Abstractions.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Options.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Microsoft.Extensions.Primitives.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Microsoft.Identity.Client.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\System.Collections.Immutable.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\System.Configuration.ConfigurationManager.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\System.Diagnostics.DiagnosticSource.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\System.Runtime.Caching.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\System.Security.Cryptography.ProtectedData.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.1\Microsoft.Data.SqlClient.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\runtimes\win-arm64\native\sni.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\runtimes\win-x64\native\sni.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\runtimes\win-x86\native\sni.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\runtimes\unix\lib\netcoreapp2.0\System.Runtime.Caching.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\runtimes\win\lib\netcoreapp2.0\System.Runtime.Caching.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\runtimes\win\lib\netstandard2.0\System.Security.Cryptography.ProtectedData.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Database.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Database.pdb
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\obj\Debug\netcoreapp3.1\Razor\Views\Account\Login.cshtml.g.cs
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Microsoft.AspNetCore.JsonPatch.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Microsoft.DotNet.PlatformAbstractions.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Microsoft.Extensions.DependencyModel.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Newtonsoft.Json.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Newtonsoft.Json.Bson.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\ViewModels.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\ViewModels.pdb
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Repository.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\AutoMapper.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
+C:\Users\luisi\source\repos\Ibanking Itla\Ibanking Itla\bin\Debug\netcoreapp3.1\Repository.pdb

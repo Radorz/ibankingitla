@@ -1,0 +1,70 @@
+﻿@{
+
+    ViewData["Title"] = "Pagos Prestamos";
+    Layout = "~/Views/Shared/_ClienteLayout.cshtml";
+}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+
+
+<p class="text-primary h4"> Pagos de Prestamos</p>
+<p class="text-muted ml-3">
+    Ingrese la Información Correspondiente
+</p>
+<div class="card bg-light">
+    <div class="card-header bg-primary text-light text-center">
+        <a asp-action="Index" class="btn btn-success">Volver</a>
+        Pago Tarjetas
+    </div>
+    <article class="card-body mx-auto" style="width: 400px;">
+        <form method="post">
+            <div class="text-center"> <span class="text-danger"></span></div>
+
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-id-badge"></i> </span>
+                </div>
+                <select class="custom-select" onchange="usuario(this)">
+                    <option selected>Prestamo a pagar</option>
+                    <option value="1">Cliente</option>
+                    <option value="2">Administrador</option>
+                </select>
+
+            </div>
+            <div class="text-center"> <span class="text-danger"></span></div>
+
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-id-badge"></i> </span>
+                </div>
+                <select class="custom-select" title="Cuenta Origen" onchange="usuario(this)">
+                    <option>Cuenta Origen</option>
+                    <option value="1">Cliente</option>
+                    <option value="2">Administrador</option>
+                </select>
+
+            </div>
+           
+            <div class="text-center">
+                <span class="text-danger"></span>
+            </div>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-money"></i> </span>
+                </div>
+                <input class="form-control" placeholder="Monto">
+            </div>
+
+            <input type="hidden" value="Inactivo" />
+            <div class="form-group">
+                <a asp-action="Confirmacion" class="btn btn-primary btn-block">Siguiente</a>
+            </div>
+
+        </form>
+    </article>
+</div>
+
+
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

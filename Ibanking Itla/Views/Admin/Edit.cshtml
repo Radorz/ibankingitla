@@ -1,0 +1,269 @@
+﻿@{
+
+    ViewData["Title"] = "Edit User";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css"><nav>
+    <div class="nav nav-tabs" id="nav-tab" role="tablist">
+        <a class="nav-item nav-link active" id="nav-home-tab" data-toggle="tab" href="#nav-home" role="tab" aria-controls="nav-home" aria-selected="true">Datos Personales</a>
+        <a class="nav-item nav-link" id="nav-profile-tab" data-toggle="tab" href="#nav-profile" role="tab" aria-controls="nav-profile" aria-selected="false">Productos</a>
+    </div>
+</nav>
+<div class="tab-content" id="nav-tabContent">
+    <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
+        <div class="card bg-light">
+            <div class="card-header bg-primary text-light text-center">
+                <a asp-action="Management" class="btn btn-success">Volver</a>
+                Editar Usuario
+            </div>
+            <article class="card-body mx-auto" style="width: 400px;">
+                <form method="post">
+                    <div class="text-center"> <span class="text-danger"></span></div>
+
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                        </div>
+                        <input class="form-control" placeholder="Usuario" type="text">
+                    </div>
+                    <div class="text-center">
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-address-card"></i> </span>
+                        </div>
+                        <input class="form-control" placeholder="Nombre" type="text">
+                    </div>
+                    <div class="text-center">
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-address-card"></i> </span>
+                        </div>
+                        <input class="form-control" placeholder="Apellido" type="text">
+
+                    </div>
+                    <div class="text-center">
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                        </div>
+                        <input class="form-control" placeholder="Email" type="email">
+
+                    </div>
+                    <div class="text-center">
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-id-badge"></i> </span>
+                        </div>
+                        <select class="custom-select" onchange="usuario(this)">
+                            <option selected>Tipo de Cuenta</option>
+                            <option value="1">Cliente</option>
+                            <option value="2">Administrador</option>
+                        </select>
+
+                    </div>
+                    <div class="text-center">
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="form-group input-group" id="monto" name='monto' hidden>
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-money"></i> </span>
+                        </div>
+                        <input class="form-control" placeholder="Monto inicial">
+                    </div>
+                    <div class="text-center">
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                        </div>
+                        <input class="form-control" placeholder="Crear password" type="password">
+                    </div>
+                    <div class="text-center">
+                        <span class="text-danger"></span>
+                    </div>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                        </div>
+                        <input class="form-control" placeholder="Repetir password" type="password">
+
+
+                    </div>
+                    <input type="hidden" value="Inactivo" />
+                    <div class="form-group">
+                        <button type="submit" class="btn btn-primary btn-block"> Crear Cuenta  </button>
+                    </div>
+
+                </form>
+            </article>
+        </div>
+    </div>
+    <div class="tab-pane fade" id="nav-profile" role="tabpanel" aria-labelledby="nav-profile-tab">
+
+        <h2 class="text-primary ml-3 mt-4">Cuentas</h2>
+        <p class="text-muted ml-3">Balance total disponible Cuentas Ahorros y Corrientes</p>
+        <div class="ml-lg-5">
+            <strong class="text-primary h4">
+                <i class="fa fa-usd" aria-hidden="true"></i>
+                Disponible
+            </strong>
+            <p class="text-muted ml-5">DOP 20,000</p>
+
+        </div>
+
+        <div id="accordion">
+            <div>
+                <h5 class="mb-0 text-right">
+                    <button class="btn btn-link collapsed dropdown-toggle" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                        Mostrar Cuentas
+                    </button>
+                </h5>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+
+                                <tr>
+                                    <th scope="col">Alias</th>
+                                    <th scope="col">Producto</th>
+                                    <th scope="col">Moneda</th>
+                                    <th scope="col">Disponible</th>
+                                    <th scope="col"></th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr />
+        <div>
+            <h2 class="text-primary ml-3 mt-4">Tarjetas de Crédito</h2>
+            <p class="text-muted ml-3">Balance total disponible para consumo</p>
+            <div class="ml-lg-5 float-left">
+                <strong class="text-primary h4">
+                    <i class="fa fa-usd" aria-hidden="true"></i>
+                    Disponible
+                </strong>
+                <p class="text-muted ml-5">DOP 20,000</p>
+
+            </div>
+            <div class="ml-lg-5 float-left">
+                <strong class="text-primary h4">
+                    <i class="fa fa-usd" aria-hidden="true"></i>
+                    Balance Actual
+                </strong>
+                <p class="text-muted ml-5">DOP 20,000</p>
+
+            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <div id="accordion">
+            <div class="">
+                <h5 class="mb-0 text-right">
+                    <button class="btn btn-link collapsed dropdown-toggle" data-toggle="collapse" data-target="#collapsethree" aria-expanded="false" aria-controls="collapsethree">
+                        Mostrar Tarjetas
+                    </button>
+                </h5>
+                <div id="collapsethree" class="collapse" aria-labelledby="headingthree" data-parent="#accordion">
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+
+                                <tr>
+                                    <th scope="col">Numero</th>
+                                    <th scope="col">Disponible</th>
+                                    <th scope="col">Ultima Transaccion</th>
+                                    <th scope="col">Estado</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <hr />
+        <div>
+            <h2 class="text-primary ml-3 mt-4">Prestamos</h2>
+            <p class="text-muted ml-3">Pago pendientes prestamos</p>
+            <div class="ml-lg-5 float-left">
+                <strong class="text-primary h4">
+                    <i class="fa fa-usd" aria-hidden="true"></i>
+                    Balance Pendiente
+                </strong>
+                <p class="text-muted ml-5">DOP 20,000</p>
+
+            </div>
+         
+        </div>
+        <br />
+        <br />
+        <br />
+        <br />
+        <div id="accordion">
+            <div class="">
+                <h5 class="mb-0 text-right">
+                    <button class="btn btn-link collapsed dropdown-toggle" data-toggle="collapse" data-target="#collapsethree" aria-expanded="false" aria-controls="collapsethree">
+                        Mostrar Prestamos
+                    </button>
+                </h5>
+                <div id="collapsethree" class="collapse" aria-labelledby="headingthree" data-parent="#accordion">
+                    <div class="card-body">
+                        <table class="table">
+                            <thead>
+
+                                <tr>
+                                    <th scope="col">Referencia</th>
+                                    <th scope="col">Monto</th>
+                                    <th scope="col">Pendiente</th>
+                                    <th scope="col">Estado</th>
+                                    <th scope="col"></th>
+
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    </div>
+
+<script language="javascript" type="text/javascript">
+    function usuario(selectTag) {
+        if (selectTag.value == '1') {
+            document.getElementById('monto').hidden = false;
+        } else {
+            document.getElementById('monto').hidden = true;
+        }
+    }
+</script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

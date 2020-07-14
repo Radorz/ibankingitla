@@ -1,0 +1,135 @@
+﻿@model ViewModels.NewAccountViewModel
+@{
+
+    ViewData["Title"] = "New User";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
+
+<div class="card bg-light">
+    <div class="card-header bg-primary text-light text-center">
+        <a asp-action="Management" class="btn btn-success">Volver</a>
+        Crear Nuevo Usuario
+    </div>
+    <article class="card-body mx-auto" style="width: 400px;">
+        <form method="post">
+            <div class="text-center"> <span asp-validation-for="Usuario" class="text-danger"></span></div>
+
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-user"></i> </span>
+                </div>
+                <input asp-for="Usuario" class="form-control" placeholder="Usuario" type="text">
+            </div>
+            <div class="text-center">
+                <span asp-validation-for="Nombre" class="text-danger"></span>
+            </div>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-address-card"></i> </span>
+                </div>
+                <input asp-for="Nombre" class="form-control" placeholder="Nombre" type="text">
+            </div>
+            <div class="text-center">
+                <span asp-validation-for="Apellido" class="text-danger"></span>
+            </div>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-address-card"></i> </span>
+                </div>
+                <input asp-for="Apellido" class="form-control" placeholder="Apellido" type="text">
+
+            </div>
+            <div class="text-center">
+                <span asp-validation-for="Cedula" class="text-danger"></span>
+            </div>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                </div>
+                <input asp-for="Cedula" class="form-control" placeholder="Cedula de Identidad" type="number">
+
+            </div>
+            <div class="text-center">
+                <span asp-validation-for="Correo" class="text-danger"></span>
+            </div>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                </div>
+                <input asp-for="Correo" class="form-control" placeholder="Email" type="email">
+
+            </div>
+            <div class="text-center">
+                <span asp-validation-for="RoleSelect" class="text-danger"></span>
+            </div>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-id-badge"></i> </span>
+                </div>
+                <select asp-for="RoleSelect" asp-items="@(new  SelectList(Model.Roles))" class="custom-select" id="RoleSelect" >
+                    <option selected>Tipo de Cuenta</option>
+
+                </select>
+
+            </div>
+            <div class="text-center">
+                <span class="text-danger"></span>
+            </div>
+            <div class="form-group input-group" id="monto" name='monto' hidden>
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-money"></i> </span>
+                </div>
+                <input asp-for="MontoInicial" class="form-control" placeholder="Monto inicial">
+            </div>
+            <div class="text-center">
+                <span asp-validation-for="Contraseña" class="text-danger"></span>
+            </div>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                </div>
+                <input asp-for="Contraseña" class="form-control" placeholder="Crear password" type="password">
+            </div>
+            <div class="text-center">
+                <span asp-validation-for="RepeatContraseña" class="text-danger"></span>
+            </div>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
+                </div>
+                <input asp-for="RepeatContraseña" class="form-control" placeholder="Repetir password" type="password">
+
+
+            </div>
+
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block"> Crear Cuenta  </button>
+            </div>
+
+        </form>
+    </article>
+</div>
+<script language="javascript" type="text/javascript">
+    var select = document.getElementById('RoleSelect');
+    select.addEventListener('change',
+        function () {
+            var selectedOption = this.options[select.selectedIndex];
+
+            if (selectedOption.text == 'cliente') {
+
+                document.getElementById('monto').hidden = false;
+
+            }
+            else {
+                document.getElementById('monto').hidden = true;
+            }
+        });
+    
+</script>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

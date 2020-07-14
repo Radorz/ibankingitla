@@ -1,0 +1,96 @@
+﻿@model List<ViewModels.ManagementViewModel>
+
+ @{
+
+        ViewData["Title"] = "Management";
+        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    }
+    <a asp-action="Create" class="btn btn-primary">Añadir nuevo</a>
+
+    <div class=" bg-light  text-black-50 text-center">
+        <div class="card-header">
+
+            <strong>Usuarios en el Sistema </strong>
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead class="thead-dark">
+
+                    <tr>
+                        <th scope="col">Id</th>
+                        <th scope="col">Nombre</th>
+                        <th scope="col">Apellido</th>
+                        <th scope="col">Usuario</th>
+                        <th scope="col">Tipo</th>
+                        <th scope="col">Estado</th>
+                        <th scope="col">Opciones</th>
+
+
+
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var item in Model)
+                    {
+                        @if (item.Tipo.Trim() == "admin")
+                        {<tr class="bg-info">
+    <td>@Html.DisplayFor(modelItem => item.Id)</td>
+    <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+    <td>@Html.DisplayFor(modelItem => item.Apellido)</td>
+    <td>@Html.DisplayFor(modelItem => item.Usuario)</td>
+    <td>@Html.DisplayFor(modelItem => item.Tipo)</td>
+
+    @if (item.Estado.Trim() == "Activo")
+    {
+        <td> <a class="btn btn-success"> @Html.DisplayFor(modelItem => item.Estado)</a></td>
+
+    }
+    else
+    {
+
+        <td> <a class="btn btn-danger">Inactivo</a></td>
+
+    }
+
+    <td>
+        <a asp-action="Editar" asp-route-id="@item.Id">Editar</a>
+        <a asp-action="Borrar" asp-route-id="@item.Id">Borrar</a>
+
+    </td>
+</tr> }
+                        else
+                        {
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Apellido)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Usuario)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Tipo)</td>
+
+                    @if (item.Estado.Trim() == "Activo")
+                    {
+                        <td> <a class="btn btn-success"> @Html.DisplayFor(modelItem => item.Estado)</a></td>
+
+                    }
+                    else
+                    {
+
+                        <td> <a class="btn btn-danger">Inactivo</a></td>
+
+                    }
+
+                    <td>
+                        <a class="btn-link" asp-action="Editar" asp-route-id="@item.Id">Editar</a>
+                        <a class="btn-link" asp-action="Borrar" asp-route-id="@item.Id">Borrar</a>
+
+                    </td>
+
+                </tr>
+                            }
+                        }
+                </tbody>
+            </table>
+
+        </div>
+
+    </div>
