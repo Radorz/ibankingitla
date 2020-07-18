@@ -168,6 +168,23 @@ namespace Ibanking_Itla.Controllers
 
             return RedirectToAction("Management");
         }
+        [HttpPost]
+        public async Task<IActionResult> AddTarjeta(string id, decimal limite)
+
+        {
+            var productentity = new ProductosUsers();
+            productentity.Id = DateTime.Now.ToString("HHyfffmm");
+            productentity.Idusuario = id;
+            productentity.Idtipo = 3;
+            productentity.tipo = "Credito";
+            productentity.Balance = 0;
+            productentity.LimiteTarjeta = limite;
+            productentity.MontoPrestamo = 0;
+
+            await _productsrepository.Add(productentity);
+
+            return RedirectToAction("Edit", new { id = id });
+        }
 
         [AcceptVerbs("GET", "POST")]
         public async Task<IActionResult> VerifyUser(string Usuario)

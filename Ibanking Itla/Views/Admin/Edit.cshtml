@@ -115,6 +115,34 @@
                     </button>
                 </h5>
                 <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                    <a class="btn-link" href="#" data-toggle="modal" data-target="#exampleModal1" data-id="@Model.Id">+ Añadir Cuenta de Ahorro</a>
+                    <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <form asp-action="statechange" method="post">
+
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Añadir Cuenta de Ahorro</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <p>¿Estas seguro que quieres agregar una cuenta nueva de ahorros a este usuario?</p>
+                                            <input class="hola" asp-for="@Model.Id" type="hidden" value="@Model.Id" />
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        <button type="submit" class="btn btn-primary">Proceder</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
                     <div class="card-body">
                         <table class="table">
                             <thead>
@@ -132,18 +160,24 @@
                                 @foreach (var item in Model.Ahorros)
                                 {
                                     var balance = item.Balance.ToString("C");
-                                <tr class="text-center">
+                                    <tr class="text-center">
 
-                                    <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                                    <td>@Html.DisplayFor(modelItem => item.tipo)</td>
-                                    <td>DO</td>
-                                    
-                                    <td>@Html.DisplayFor(modelItem => balance)</td>
-                                </tr>
-                            }
+                                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.tipo)</td>
+                                        <td>DO</td>
 
-                                </tbody>
-                            </table>
+                                        <td>@Html.DisplayFor(modelItem => balance)</td>
+                                        @if (item.tipo.Trim() != "Principal")
+                                        {
+                                            <td>
+                                                <i class="fa fa-trash" aria-hidden="true" style="color:red "></i>
+                                            </td>
+                                        }
+                                    </tr>
+                                }
+
+                            </tbody>
+                        </table>
                     </div>
                 </div>
             </div>
@@ -182,6 +216,42 @@
                     </button>
                 </h5>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingthree" data-parent="#accordion">
+                    <a class="btn-link" href="#" data-toggle="modal" data-target="#exampleModal2" data-id="@Model.Id">+ Añadir Tarjeta de Credito</a>
+                    <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                        <form asp-action="AddTarjeta" method="post">
+
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel">Añadir Tarjeta de Credito</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body">
+                                        <div class="form-group">
+                                            <div class="text-center">
+                                                <span asp-validation-for="" class="text-danger"></span>
+                                            </div>
+                                            <div class="form-group input-group">
+                                                <div class="input-group-prepend">
+                                                    <span class="input-group-text"> <i class="fa fa-money"></i> </span>
+                                                </div>
+                                                <input asp-for="" class="form-control" placeholder="Limite de gasto" type="tel">
+                                            </div> <input class="hola" asp-for="@Model.Id" type="hidden" value="@Model.Id" />
+                                        </div>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                        <button type="submit" class="btn btn-primary">Proceder</button>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </form>
+
+                    </div>
+
                     <div class="card-body">
                         <table class="table">
                             <thead>
@@ -191,6 +261,8 @@
                                     <th scope="col">Disponible</th>
                                     <th scope="col">Balance al corte</th>
                                     <th scope="col">Limite</th>
+                                    <th scope="col"></th>
+
 
                                 </tr>
                             </thead>
@@ -208,6 +280,9 @@
                                         <td>@Html.DisplayFor(modelItem => balancecorte)</td>
 
                                         <td>@Html.DisplayFor(modelItem => Limite)</td>
+                                        <td>
+                                            <i class="fa fa-trash" aria-hidden="true" style="color:red "></i>
+                                        </td>
                                     </tr>
                                 }
 
@@ -244,6 +319,8 @@
                     </button>
                 </h5>
                 <div id="collapsethree" class="collapse" aria-labelledby="headingthree" data-parent="#accordion">
+                    <a class="btn-link" href="#">+ Añadir Prestamo</a>
+
                     <div class="card-body">
                         <table class="table">
                             <thead>
@@ -253,6 +330,7 @@
                                     <th scope="col">Monto</th>
                                     <th scope="col">Pendiente</th>
                                     <th scope="col"></th>
+
 
 
                                 </tr>
@@ -269,6 +347,9 @@
                                         <td>@Html.DisplayFor(modelItem => item.Id)</td>
                                         <td>@Html.DisplayFor(modelItem => Monto)</td>
                                         <td>@Html.DisplayFor(modelItem => balance)</td>
+                                        <td>
+                                            <i class="fa fa-trash" aria-hidden="true" style="color:red "></i>
+                                        </td>
                                     </tr>
                                 }
                             </tbody>
