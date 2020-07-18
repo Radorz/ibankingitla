@@ -136,7 +136,7 @@ namespace Ibanking_Itla.Controllers
 
             foreach (var item in vm.Prestamos)
             {
-                vm.BalancePrestamo = vm.BalancePrestamo + (item.LimiteTarjeta - item.Balance);
+                vm.BalancePrestamo = vm.BalancePrestamo + (item.MontoPrestamo - item.Balance);
 
             }
 
@@ -169,7 +169,7 @@ namespace Ibanking_Itla.Controllers
             return RedirectToAction("Management");
         }
         [HttpPost]
-        public async Task<IActionResult> AddTarjeta(string id, decimal limite)
+        public async Task<IActionResult> AddTarjeta(string id, decimal LimiteNewTarjeta)
 
         {
             var productentity = new ProductosUsers();
@@ -178,8 +178,25 @@ namespace Ibanking_Itla.Controllers
             productentity.Idtipo = 3;
             productentity.tipo = "Credito";
             productentity.Balance = 0;
-            productentity.LimiteTarjeta = limite;
+            productentity.LimiteTarjeta = LimiteNewTarjeta;
             productentity.MontoPrestamo = 0;
+
+            await _productsrepository.Add(productentity);
+
+            return RedirectToAction("Edit", new { id = id });
+        }
+        [HttpPost]
+        public async Task<IActionResult> AddPrestamo(string id, decimal MontonewPrestamo)
+
+        {
+            var productentity = new ProductosUsers();
+            productentity.Id = DateTime.Now.ToString("HHyfffmm");
+            productentity.Idusuario = id;
+            productentity.Idtipo = 2;
+            productentity.tipo = "Deuda";
+            productentity.Balance = 0;
+            productentity.LimiteTarjeta = 0;
+            productentity.MontoPrestamo = MontonewPrestamo;
 
             await _productsrepository.Add(productentity);
 

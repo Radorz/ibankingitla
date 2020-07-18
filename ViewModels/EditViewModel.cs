@@ -64,6 +64,12 @@ namespace ViewModels
         public decimal BalancePrestamo { get; set; }
         public List<ProductosUsers> Prestamos { get; set; }
 
+        public decimal MontonewPrestamo { get; set; }
+
+        public decimal LimiteNewTarjeta { get; set; }
+
+
+
 
 
     }

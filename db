@@ -1,13 +1,8 @@
-USE [master]
+﻿USE [master]
 GO
 
-/****** Object:  Database [Ibanking]    Script Date: 17/7/2020 9:02:32 p. m. ******/
 CREATE DATABASE [Ibanking]
- CONTAINMENT = NONE
- ON  PRIMARY 
-( NAME = N'Ibanking', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER01\MSSQL\DATA\Ibanking.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
- LOG ON 
-( NAME = N'Ibanking_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER01\MSSQL\DATA\Ibanking_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+  = 65536KB )
 GO
 
 ALTER DATABASE [Ibanking] SET COMPATIBILITY_LEVEL = 140
@@ -115,7 +110,6 @@ GO
 USE [Ibanking]
 GO
 
-/****** Object:  Table [dbo].[AspNetRoleClaims]    Script Date: 17/7/2020 9:03:50 p. m. ******/
 SET ANSI_NULLS ON
 GO
 
@@ -145,7 +139,6 @@ GO
 USE [Ibanking]
 GO
 
-/****** Object:  Table [dbo].[AspNetRoles]    Script Date: 17/7/2020 9:04:03 p. m. ******/
 SET ANSI_NULLS ON
 GO
 
@@ -168,7 +161,7 @@ GO
 USE [Ibanking]
 GO
 
-/****** Object:  Table [dbo].[AspNetUserClaims]    Script Date: 17/7/2020 9:05:45 p. m. ******/
+
 SET ANSI_NULLS ON
 GO
 
@@ -198,7 +191,7 @@ GO
 USE [Ibanking]
 GO
 
-/****** Object:  Table [dbo].[AspNetUserLogins]    Script Date: 17/7/2020 9:05:52 p. m. ******/
+
 SET ANSI_NULLS ON
 GO
 
@@ -229,7 +222,7 @@ GO
 USE [Ibanking]
 GO
 
-/****** Object:  Table [dbo].[AspNetUserRoles]    Script Date: 17/7/2020 9:06:01 p. m. ******/
+
 SET ANSI_NULLS ON
 GO
 
@@ -266,7 +259,7 @@ GO
 USE [Ibanking]
 GO
 
-/****** Object:  Table [dbo].[AspNetUsers]    Script Date: 17/7/2020 9:06:09 p. m. ******/
+
 SET ANSI_NULLS ON
 GO
 
@@ -299,7 +292,6 @@ GO
 USE [Ibanking]
 GO
 
-/****** Object:  Table [dbo].[AspNetUserTokens]    Script Date: 17/7/2020 9:06:29 p. m. ******/
 SET ANSI_NULLS ON
 GO
 
@@ -330,7 +322,7 @@ GO
 USE [Ibanking]
 GO
 
-/****** Object:  Table [dbo].[Pagos]    Script Date: 17/7/2020 9:07:15 p. m. ******/
+
 SET ANSI_NULLS ON
 GO
 
@@ -376,7 +368,7 @@ GO
 USE [Ibanking]
 GO
 
-/****** Object:  Table [dbo].[ProductosUsers]    Script Date: 17/7/2020 9:07:58 p. m. ******/
+
 SET ANSI_NULLS ON
 GO
 
@@ -413,7 +405,7 @@ GO
 USE [Ibanking]
 GO
 
-/****** Object:  Table [dbo].[TiposProductos]    Script Date: 17/7/2020 9:08:05 p. m. ******/
+
 SET ANSI_NULLS ON
 GO
 
@@ -433,7 +425,7 @@ GO
 USE [Ibanking]
 GO
 
-/****** Object:  Table [dbo].[Transacciones]    Script Date: 17/7/2020 9:08:12 p. m. ******/
+
 SET ANSI_NULLS ON
 GO
 
@@ -470,7 +462,7 @@ GO
 USE [Ibanking]
 GO
 
-/****** Object:  Table [dbo].[Users]    Script Date: 17/7/2020 9:08:22 p. m. ******/
+
 SET ANSI_NULLS ON
 GO
 

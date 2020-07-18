@@ -17,3 +17,11 @@ $('#exampleModal2').on('show.bs.modal', function (event) {
 	modal.find('.modal-body .hola').val(id)
 
 })
+
+$('#exampleModal3').on('show.bs.modal', function (event) {
+	var button = $(event.relatedTarget)
+	var id = button.data('id')
+	var modal = $(this)
+	modal.find('.modal-body .hola').val(id)
+
+})

@@ -34,7 +34,7 @@ namespace Ibanking_Itla
             services.AddControllersWithViews();
 
             services.AddDbContext<IbankingContext>(options =>
-        options.UseSqlServer("Server=DESKTOP-5VA8VTG\\MSSQLSERVER01; Database = Ibanking; persist security info = True; Integrated Security = SSPI; "));
+        options.UseSqlServer("Server=DESKTOP-DJ6VOP6\\SQLEXPRESS; Database = Ibanking; persist security info = True; Integrated Security = SSPI; "));
             services.AddIdentity<IdentityUser, IdentityRole>(options => {
 
                 options.Password = new PasswordOptions

@@ -7333,25 +7333,23 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\luisi\\.nuget\\packages\\": {},
-    "C:\\Microsoft\\Xamarin\\NuGet\\": {},
-    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
+    "C:\\Users\\User\\.nuget\\packages\\": {},
+    "C:\\Microsoft\\Xamarin\\NuGet\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\luisi\\source\\repos\\Ibanking Itla\\ViewModels\\ViewModels.csproj",
+      "projectUniqueName": "C:\\Users\\User\\Desktop\\ibankingitla\\ViewModels\\ViewModels.csproj",
       "projectName": "ViewModels",
-      "projectPath": "C:\\Users\\luisi\\source\\repos\\Ibanking Itla\\ViewModels\\ViewModels.csproj",
-      "packagesPath": "C:\\Users\\luisi\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\luisi\\source\\repos\\Ibanking Itla\\ViewModels\\obj\\",
+      "projectPath": "C:\\Users\\User\\Desktop\\ibankingitla\\ViewModels\\ViewModels.csproj",
+      "packagesPath": "C:\\Users\\User\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\User\\Desktop\\ibankingitla\\ViewModels\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
-        "C:\\Microsoft\\Xamarin\\NuGet\\",
-        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+        "C:\\Microsoft\\Xamarin\\NuGet\\"
       ],
       "configFilePaths": [
-        "C:\\Users\\luisi\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\User\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Xamarin.Offline.config"
       ],
@@ -7365,8 +7363,8 @@
       "frameworks": {
         "netcoreapp3.1": {
           "projectReferences": {
-            "C:\\Users\\luisi\\source\\repos\\Ibanking Itla\\Database\\Database.csproj": {
-              "projectPath": "C:\\Users\\luisi\\source\\repos\\Ibanking Itla\\Database\\Database.csproj"
+            "C:\\Users\\User\\Desktop\\ibankingitla\\Database\\Database.csproj": {
+              "projectPath": "C:\\Users\\User\\Desktop\\ibankingitla\\Database\\Database.csproj"
             }
           }
         }
@@ -7399,18 +7397,12 @@
         ],
         "assetTargetFallback": true,
         "warn": true,
-        "downloadDependencies": [
-          {
-            "name": "Microsoft.AspNetCore.App.Ref",
-            "version": "[3.1.2, 3.1.2]"
-          }
-        ],
         "frameworkReferences": {
           "Microsoft.NETCore.App": {
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.300\\RuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\3.1.301\\RuntimeIdentifierGraph.json"
       }
     }
   }
