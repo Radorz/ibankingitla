@@ -59,9 +59,10 @@ namespace Ibanking_Itla
                 options.Password.RequiredLength = 6;
 
                 // Lockout settings.
-                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
-                options.Lockout.MaxFailedAccessAttempts = 5;
                 options.Lockout.AllowedForNewUsers = true;
+                options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
+                options.Lockout.MaxFailedAccessAttempts = 3;
+                
 
                 // User settings.
                 options.User.AllowedUserNameCharacters =
@@ -73,14 +74,17 @@ namespace Ibanking_Itla
             {
                 // Cookie settings
                 options.Cookie.HttpOnly = true;
-                options.ExpireTimeSpan = TimeSpan.FromMinutes(5);
+                options.ExpireTimeSpan = TimeSpan.FromMinutes(40);
 
                 options.LoginPath = "/Account/Login";
                 options.AccessDeniedPath = "/Account/AccessDenied";
                 options.SlidingExpiration = true;
             });
+
             services.AddAutoMapper(typeof(AutoMapperConfi).GetTypeInfo().Assembly);
             services.AddScoped<AdminRepository>();
+            services.AddScoped<ProductosRepository>();
+
 
         }
 

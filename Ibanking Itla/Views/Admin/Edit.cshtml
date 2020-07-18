@@ -1,4 +1,5 @@
-﻿@{
+﻿@model ViewModels.EditViewModel
+@{
 
     ViewData["Title"] = "Edit User";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -15,94 +16,76 @@
     <div class="tab-pane fade show active" id="nav-home" role="tabpanel" aria-labelledby="nav-home-tab">
         <div class="card bg-light">
             <div class="card-header bg-primary text-light text-center">
-                <a asp-action="Management" class="btn btn-success">Volver</a>
+                <a asp-action="Edit" class="btn btn-success">Volver</a>
                 Editar Usuario
             </div>
             <article class="card-body mx-auto" style="width: 400px;">
                 <form method="post">
-                    <div class="text-center"> <span class="text-danger"></span></div>
 
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-user"></i> </span>
-                        </div>
-                        <input class="form-control" placeholder="Usuario" type="text">
-                    </div>
                     <div class="text-center">
-                        <span class="text-danger"></span>
+                        <span asp-validation-for="Nombre" class="text-danger"></span>
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-address-card"></i> </span>
                         </div>
-                        <input class="form-control" placeholder="Nombre" type="text">
+                        <input asp-for="Nombre" class="form-control" placeholder="Nombre" type="text">
                     </div>
                     <div class="text-center">
-                        <span class="text-danger"></span>
+                        <span asp-validation-for="Apellido" class="text-danger"></span>
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-address-card"></i> </span>
                         </div>
-                        <input class="form-control" placeholder="Apellido" type="text">
+                        <input asp-for="Apellido" class="form-control" placeholder="Apellido" type="text">
 
                     </div>
                     <div class="text-center">
-                        <span class="text-danger"></span>
+                        <span asp-validation-for="Correo" class="text-danger"></span>
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                         </div>
-                        <input class="form-control" placeholder="Email" type="email">
+                        <input asp-for="Correo" class="form-control" placeholder="Email" type="email">
 
                     </div>
-                    <div class="text-center">
-                        <span class="text-danger"></span>
-                    </div>
-                    <div class="form-group input-group">
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-id-badge"></i> </span>
-                        </div>
-                        <select class="custom-select" onchange="usuario(this)">
-                            <option selected>Tipo de Cuenta</option>
-                            <option value="1">Cliente</option>
-                            <option value="2">Administrador</option>
-                        </select>
 
-                    </div>
-                    <div class="text-center">
-                        <span class="text-danger"></span>
-                    </div>
-                    <div class="form-group input-group" id="monto" name='monto' hidden>
-                        <div class="input-group-prepend">
-                            <span class="input-group-text"> <i class="fa fa-money"></i> </span>
+                    @if (Model.tipouser == "cliente")
+                    {
+                        <div class="text-center">
+                            <span asp-validation-for="MontoAñadido" class="text-danger"></span>
                         </div>
-                        <input class="form-control" placeholder="Monto inicial">
-                    </div>
+                        <div class="form-group input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text"> <i class="fa fa-money"></i> </span>
+                            </div>
+                            <input asp-for="MontoAñadido" class="form-control" placeholder="Añadirbalance" type="tel">
+                        </div>
+                    }
                     <div class="text-center">
-                        <span class="text-danger"></span>
+                        <span asp-validation-for="Contraseña" class="text-danger"></span>
                     </div>
                     <div class="form-group input-group">
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                         </div>
-                        <input class="form-control" placeholder="Crear password" type="password">
+                        <input asp-for="Contraseña" class="form-control" placeholder="Editar password" type="password" id="Contraseña" name="Contraseña">
                     </div>
                     <div class="text-center">
-                        <span class="text-danger"></span>
+                        <span asp-validation-for="RepeatContraseña" class="text-danger"></span>
                     </div>
-                    <div class="form-group input-group">
+                    <div class="form-group input-group" id="ver" name="ver" hidden>
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                         </div>
-                        <input class="form-control" placeholder="Repetir password" type="password">
+                        <input asp-for="RepeatContraseña" class="form-control" placeholder="Repetir password" type="password">
 
 
                     </div>
-                    <input type="hidden" value="Inactivo" />
                     <div class="form-group">
-                        <button type="submit" class="btn btn-primary btn-block"> Crear Cuenta  </button>
+                        <button type="submit" class="btn btn-primary btn-block"> Editar Cuenta  </button>
                     </div>
 
                 </form>
@@ -134,7 +117,7 @@
                         <table class="table">
                             <thead>
 
-                                <tr>
+                                <tr class="text-center">
                                     <th scope="col">Alias</th>
                                     <th scope="col">Producto</th>
                                     <th scope="col">Moneda</th>
@@ -144,8 +127,21 @@
                                 </tr>
                             </thead>
                             <tbody>
-                            </tbody>
-                        </table>
+                                @foreach (var item in Model.Ahorros)
+                                {
+                                    var balance = item.Balance.ToString("C");
+                                <tr class="text-center">
+
+                                    <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                                    <td>@Html.DisplayFor(modelItem => item.tipo)</td>
+                                    <td>DO</td>
+                                    
+                                    <td>@Html.DisplayFor(modelItem => balance)</td>
+                                </tr>
+                            }
+
+                                </tbody>
+                            </table>
                     </div>
                 </div>
             </div>
@@ -166,7 +162,7 @@
             <div class="ml-lg-5 float-left">
                 <strong class="text-primary h4">
                     <i class="fa fa-usd" aria-hidden="true"></i>
-                    Balance Actual
+                    Balance a pagar
                 </strong>
                 <p class="text-muted ml-5">DOP 20,000</p>
 
@@ -191,12 +187,25 @@
                                 <tr>
                                     <th scope="col">Numero</th>
                                     <th scope="col">Disponible</th>
-                                    <th scope="col">Ultima Transaccion</th>
+                                    <th scope="col">Balance al corte</th>
                                     <th scope="col">Estado</th>
 
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach (var item in Model.Tarjetas)
+                                {
+                                    var balance = item.Balance.ToString("C");
+                                    <tr class="text-center">
+
+                                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Idtipo)</td>
+                                        <td>DO</td>
+
+                                        <td>@Html.DisplayFor(modelItem => balance)</td>
+                                    </tr>
+                                }
+
                             </tbody>
                         </table>
                     </div>
@@ -216,7 +225,7 @@
                 <p class="text-muted ml-5">DOP 20,000</p>
 
             </div>
-         
+
         </div>
         <br />
         <br />
@@ -253,16 +262,46 @@
         </div>
 
     </div>
-    </div>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
 
 <script language="javascript" type="text/javascript">
-    function usuario(selectTag) {
-        if (selectTag.value == '1') {
-            document.getElementById('monto').hidden = false;
-        } else {
-            document.getElementById('monto').hidden = true;
+
+
+    $('#Contraseña').keyup(function () {
+        document.getElementById('ver').hidden = false;
+        var x = $(this).val();
+        if (x == "") {
+
+            document.getElementById('ver').hidden = true;
+
         }
-    }
+
+    });
+    //var select = document.getElementById('Contraseña');
+    //select.addEventListener('onkeyup',
+    //    function () {
+
+    //        document.getElementById('ver').hidden = true;
+
+    //    });
+
+    //$(document).ready(function () {
+    //    $("#pase").change(function () {
+    //        alert($('input[id=pase]').val());
+    //    });
+    //    $(".nombre3").change(function () {
+    //        alert($('input[class=nombre3]').val());
+    //    });
+    //});
+
+    //$(function () {
+    //     Handler for .ready() called.
+    //    $("#pase").on("change", function () {
+    //        alert($('input[id=pase]').val());
+    //    });
+    //});
+
 </script>
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}

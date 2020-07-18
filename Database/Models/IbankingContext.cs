@@ -78,6 +78,14 @@ namespace Database.Models
                     .IsRequired()
                     .HasColumnName("idusuario")
                     .HasMaxLength(450);
+            
+                entity.Property(e => e.tipo)
+                   .IsRequired()
+                   .HasColumnName("tipo")
+                   .HasMaxLength(20);
+
+                entity.Property(e => e.Balance).HasColumnType("decimal(19, 2)");
+
 
                 entity.HasOne(d => d.IdtipoNavigation)
                     .WithMany(p => p.ProductosUsers)

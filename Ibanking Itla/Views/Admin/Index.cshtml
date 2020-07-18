@@ -1,4 +1,4 @@
-﻿
+﻿@model ViewModels.AdminViewModel
 @{
     ViewData["Title"] = "Admin";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
@@ -54,7 +54,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Clientes Activos</h5>
                         <i class="fa fa-user fa-5x" aria-hidden="true" style="color:green "></i>
-                        <p style="color:green; font-size:30px; ">900</p>
+                        <p style="color:green; font-size:30px; ">@Model.ClientesActivos</p>
                     </div>
                 </div>
             </div>
@@ -63,7 +63,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Clientes Inactivos</h5>
                         <i class="fa fa-user-times fa-5x" aria-hidden="true" style="color:red "></i>
-                        <p style="color:red; font-size:30px; ">800</p>
+                        <p style="color:red; font-size:30px; ">@Model.ClientesInactivos</p>
                     </div>
                 </div>
             </div>
@@ -73,7 +73,7 @@
                         <div class="card-body">
                             <h5 class="card-title">Productos Asignados</h5>
                             <i class="fa fa-archive fa-5x" aria-hidden="true" style="color:green "></i>
-                            <p style="color:green; font-size:30px; ">500</p>
+                            <p style="color:green; font-size:30px; ">@Model.ProductosAsignados</p>
                         </div>
                     </div>
                 </div>

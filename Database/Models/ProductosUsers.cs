@@ -16,6 +16,9 @@ namespace Database.Models
         public string Id { get; set; }
         public string Idusuario { get; set; }
         public int Idtipo { get; set; }
+        public string tipo { get; set; }
+        public decimal Balance { get; set; }
+
 
         public virtual TiposProductos IdtipoNavigation { get; set; }
         public virtual Users IdusuarioNavigation { get; set; }

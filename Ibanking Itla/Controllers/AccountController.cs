@@ -52,11 +52,17 @@ namespace Ibanking_Itla.Controllers
 
             if (ModelState.IsValid)
             {
-                var resultado = await _signInManager.PasswordSignInAsync(vm.User, vm.Password, false, false);
+                var resultado = await _signInManager.PasswordSignInAsync(vm.User, vm.Password, false, true);
+                if (resultado.IsLockedOut)
+                {
 
+                    ModelState.AddModelError("Error", "Esta cuenta ha sido Inactivada");
+                    return View(vm);
+                }
                 if (resultado.Succeeded)
                 {
-                  var  user = await _userManager.FindByNameAsync(vm.User);
+                   
+                    var  user = await _userManager.FindByNameAsync(vm.User);
                     if(await _userManager.IsInRoleAsync(user, "Cliente"))
                     {
 

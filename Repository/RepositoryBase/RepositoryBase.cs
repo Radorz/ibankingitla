@@ -10,7 +10,7 @@ namespace Repository.RepositoryBase
          where TEntity : class
         where TContext : DbContext
     {
-        private readonly TContext _context;
+        public readonly TContext _context;
 
         public RepositoryBase(TContext context)
         {
@@ -40,6 +40,7 @@ namespace Repository.RepositoryBase
 
         public async Task<List<TEntity>> GetAll()
         {
+
             return await _context.Set<TEntity>().ToListAsync();
 
         }

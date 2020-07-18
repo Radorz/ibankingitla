@@ -18,6 +18,7 @@ namespace Ibanking_Itla.Infraestructure.Automapper
 
             Configureregister();
             ConfigureManager();
+            Configureedit();
 
         }
 
@@ -27,6 +28,14 @@ namespace Ibanking_Itla.Infraestructure.Automapper
                 (dest => dest.RepeatContraseña, opt => opt.Ignore()).ForMember
                 (dest => dest.Roles, opt => opt.Ignore()).ForMember
                 (dest => dest.RoleSelect, opt => opt.Ignore());
+
+
+        }
+        private void Configureedit()
+        {
+            CreateMap<EditViewModel, Users>().ReverseMap().ForMember(dest => dest.MontoAñadido, opt => opt.Ignore()).ForMember
+                (dest => dest.RepeatContraseña, opt => opt.Ignore()).ForMember
+                (dest => dest.tipouser, opt => opt.Ignore());
 
 
         }

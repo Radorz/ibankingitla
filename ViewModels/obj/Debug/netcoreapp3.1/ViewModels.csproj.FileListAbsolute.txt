@@ -7,3 +7,6 @@ C:\Users\luisi\source\repos\Ibanking Itla\ViewModels\bin\Debug\netcoreapp3.1\Vie
 C:\Users\luisi\source\repos\Ibanking Itla\ViewModels\bin\Debug\netcoreapp3.1\ViewModels.pdb
 C:\Users\luisi\source\repos\Ibanking Itla\ViewModels\obj\Debug\netcoreapp3.1\ViewModels.dll
 C:\Users\luisi\source\repos\Ibanking Itla\ViewModels\obj\Debug\netcoreapp3.1\ViewModels.pdb
+C:\Users\luisi\source\repos\Ibanking Itla\ViewModels\bin\Debug\netcoreapp3.1\Database.dll
+C:\Users\luisi\source\repos\Ibanking Itla\ViewModels\bin\Debug\netcoreapp3.1\Database.pdb
+C:\Users\luisi\source\repos\Ibanking Itla\ViewModels\obj\Debug\netcoreapp3.1\ViewModels.csproj.CopyComplete

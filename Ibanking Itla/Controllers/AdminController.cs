@@ -20,35 +20,46 @@ namespace Ibanking_Itla.Controllers
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly RoleManager<IdentityRole> _role;
         private readonly IMapper _mapper;
-        private readonly AdminRepository _repository;
+        private readonly AdminRepository _adminrepository;
+        private readonly ProductosRepository _productsrepository;
+
 
 
 
 
         public AdminController (UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager,
-            RoleManager<IdentityRole> role, IMapper mapper, AdminRepository repository)
+            RoleManager<IdentityRole> role, IMapper mapper, AdminRepository adminrepository, ProductosRepository productsrepository)
         {
 
             _userManager = userManager;
             _signInManager = signInManager;
             _role = role;
             this._mapper = mapper;
-            this._repository = repository;
+            this._adminrepository = adminrepository;
+            this._productsrepository = productsrepository;
+
 
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
-            return View();
+            var vm = new AdminViewModel();
+           vm.ProductosAsignados= await _productsrepository.GetCOUNT();
+            vm.ClientesActivos = await _adminrepository.GetCOUNTactive();
+            vm.ClientesInactivos = await _adminrepository.GetCOUNTinactive();
+            return View(vm);
         }
         
         public async Task<IActionResult> Management()
         {
-            var vm = await _repository.GetAll();
-            List< ManagementViewModel> usuarioentity = new List<ManagementViewModel>();
-            foreach (var ua in vm){
+            var vm = await _adminrepository.GetAll();
+             ManagementViewModel usuarioentity = new ManagementViewModel();
+            foreach(var user in vm)
+            {
 
-                usuarioentity.Add(_mapper.Map<ManagementViewModel>(ua));
+
             }
+                usuarioentity.list =vm;
+            
 
             return View(usuarioentity);
         }
@@ -72,8 +83,8 @@ namespace Ibanking_Itla.Controllers
                 usuarioentity.Tipo = vm.RoleSelect;
                 usuarioentity.Estado = "Activo";
                 usuarioentity.Id = user.Id;
-                var user12 = await _repository.GetAll();
-                var resul12 = user12.FirstOrDefault(a => a.Usuario.Trim() == usuarioentity.Usuario.Trim());
+                
+                 
 
                 if (resul.Succeeded)
                 {
@@ -81,23 +92,72 @@ namespace Ibanking_Itla.Controllers
                     var resulrol = await _userManager.AddToRoleAsync(user, vm.RoleSelect);
                     if (resulrol.Succeeded)
                     {
-                        await _repository.Add(usuarioentity);
+                        
+                        await _adminrepository.Add(usuarioentity);
+                        if (vm.RoleSelect.Equals("cliente")){
+
+                            var productentity = new ProductosUsers();
+                            productentity.Id = DateTime.Now.ToString("HHyfffmm");
+                            productentity.Idusuario = user.Id;
+                            productentity.Idtipo = 1;
+                            productentity.tipo = "Principal";
+
+                            await _productsrepository.Add(productentity);
+
+
+                        }
                         return RedirectToAction("Management");
                     }
                 }
             }
              return View();
         }
-        public IActionResult Edit()
+        public async Task<IActionResult> Edit(string id)
         {
+           var user= await _adminrepository.GetbyIdNew(id);
+            var vm = _mapper.Map<EditViewModel>(user);
+            vm.tipouser = user.Tipo.Trim();
+            vm.RepeatContraseña = user.Contraseña.Trim();
+            vm.Ahorros = await _productsrepository.GetAllCuentas(id);
+            vm.Tarjetas = await _productsrepository.GetAllTarjetas(id);
+            vm.Prestamos = await _productsrepository.GetAllPrestamos(id);
+
+
+
+
+            return View(vm);
+        }
+        [HttpPost]
+        public async Task<IActionResult> DeleteUser(string id)
+        {
+
+            await _adminrepository.Deletenew(id);
+
             return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> statechange(string id)
+
+        {
+            var user = await _userManager.FindByIdAsync(id);
+            if (await _userManager.IsLockedOutAsync(user))
+            {
+                await _userManager.SetLockoutEndDateAsync(user, new DateTimeOffset(DateTime.UtcNow));
+
+
+            }
+            await _userManager.SetLockoutEndDateAsync(user, DateTime.FromOADate(365*200));
+
+            await _adminrepository.statechange(id);
+
+            return RedirectToAction("Management");
         }
 
         [AcceptVerbs("GET", "POST")]
         public async Task<IActionResult> VerifyUser(string Usuario)
         {
        
-            var user = await _repository.GetAll();
+            var user = await _adminrepository.GetAll();
             var resul = user.FirstOrDefault(a => a.Usuario.Trim() == Usuario.Trim());
             if (resul != null)
             {

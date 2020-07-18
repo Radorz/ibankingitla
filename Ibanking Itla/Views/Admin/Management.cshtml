@@ -1,4 +1,4 @@
-﻿@model List<ViewModels.ManagementViewModel>
+﻿@model ViewModels.ManagementViewModel
 
  @{
 
@@ -29,62 +29,168 @@
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var item in Model)
-                    {
+                    
+                    @foreach (var item in Model.list)
+                    { string estado;
+                        string icon;
+
+
                         @if (item.Tipo.Trim() == "admin")
-                        {<tr class="bg-info">
-    <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
-    <td>@Html.DisplayFor(modelItem => item.Apellido)</td>
-    <td>@Html.DisplayFor(modelItem => item.Usuario)</td>
-    <td>@Html.DisplayFor(modelItem => item.Tipo)</td>
-
-    @if (item.Estado.Trim() == "Activo")
-    {
-        <td> <a class="btn btn-success"> @Html.DisplayFor(modelItem => item.Estado)</a></td>
-
-    }
-    else
-    {
-
-        <td> <a class="btn btn-danger">Inactivo</a></td>
-
-    }
-
-    <td>
-        <a asp-action="Editar" asp-route-id="@item.Id">Editar</a>
-        <a asp-action="Borrar" asp-route-id="@item.Id">Borrar</a>
-
-    </td>
-</tr> }
-                        else
-                        {
-                <tr>
-                    <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Apellido)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Usuario)</td>
-                    <td>@Html.DisplayFor(modelItem => item.Tipo)</td>
-
-                    @if (item.Estado.Trim() == "Activo")
                     {
-                        <td> <a class="btn btn-success"> @Html.DisplayFor(modelItem => item.Estado)</a></td>
+                        <tr style="        background-color: #F0F0F0">
+                            <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Apellido)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Usuario)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Tipo)</td>
 
+                            @if (item.Estado.Trim() == "Activo")
+                            {
+                                <td> <a class="btn btn-success"> @Html.DisplayFor(modelItem => item.Estado)</a></td>
+                                estado = "Desactivar";
+                                icon = "fa-scissors";
+
+                            }
+                            else
+                            {
+                                estado = "Activar";
+                                icon = "fa-play";
+                                        <td> <a class="btn btn-danger">Inactivo</a></td>
+
+                            }
+
+                            <td>
+                                @if (User.Identity.Name != item.Usuario.Trim())
+                                {
+                                   
+                                    <div class="btn-group dropleft">
+
+                                        <button class="btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <i class="fa fa-cog" aria-hidden="true"></i>
+                                        </button>
+                                        <div class="dropdown-menu">
+
+                                            <a href="" class="dropdown-item" data-toggle="modal" data-target="#exampleModal1" data-id="@item.Id">
+                                                <i class="fa @icon" aria-hidden="true"></i>
+                                                &nbsp;@estado
+                                            </a>
+
+                                            <a class="dropdown-item" asp-route-id="@item.Id" asp-action="Edit">
+                                                <i class="fa fa-pencil fa-fw"></i>&nbsp;Editar
+                                            </a>
+                                        </div>
+
+                                    </div>
+                                }
+                                <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <form asp-action="statechange" method="post">
+
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Des/activar Usuario</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <p>¿Estas seguro que quieres Des/activar este usuario?</p>
+                                                        <input class="hola" asp-for="@Model.Id" type="hidden" value="@Model.Id" />
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                    <button type="submit" class="btn btn-primary">Proceder</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+
+
+                            </td>
+                        </tr>
                     }
                     else
                     {
+                        <tr>
+                            <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Apellido)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Usuario)</td>
+                            <td>@Html.DisplayFor(modelItem => item.Tipo)</td>
 
-                        <td> <a class="btn btn-danger">Inactivo</a></td>
+                            @if (item.Estado.Trim() == "Activo")
+                            {
+                                <td> <a class="btn btn-success"> @Html.DisplayFor(modelItem => item.Estado)</a></td>
+                                estado = "Desactivar";
+                                icon = "fa-scissors";
 
-                    }
 
-                    <td>
-                        <a class="btn-link" asp-action="Editar" asp-route-id="@item.Id">Editar</a>
-                        <a class="btn-link" asp-action="Borrar" asp-route-id="@item.Id">Borrar</a>
-
-                    </td>
-
-                </tr>
                             }
-                        }
+                            else
+                            {
+
+                                <td> <a class="btn btn-danger">Inactivo</a></td>
+                                estado = "Activar";
+                                icon = "fa-play";
+
+                            }
+
+                            <td>
+                                <div class="btn-group dropleft">
+
+                                    <button class="btn" type="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                        <i class="fa fa-cog" aria-hidden="true"></i>
+                                    </button>
+
+                                    <div class="dropdown-menu">
+                                        <a href="" class="dropdown-item" data-toggle="modal" data-target="#exampleModal1" data-id="@item.Id">
+                                            <i class="fa @icon" aria-hidden="true"></i>
+                                            &nbsp;@estado
+                                        </a>
+
+                                        <a  class="dropdown-item" asp-route-id="@item.Id" asp-action="Edit">
+                                            <i class="fa fa-pencil fa-fw"></i>&nbsp;Editar
+                                        </a>
+
+                                    </div>
+                                </div>
+
+                                <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                    <form asp-action="statechange" method="post">
+
+                                        <div class="modal-dialog" role="document">
+                                            <div class="modal-content">
+                                                <div class="modal-header">
+                                                    <h5 class="modal-title" id="exampleModalLabel">Des/activar Usuario</h5>
+                                                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                        <span aria-hidden="true">&times;</span>
+                                                    </button>
+                                                </div>
+                                                <div class="modal-body">
+                                                    <div class="form-group">
+                                                        <p>¿Estas seguro que quieres Des/activar este usuario?</p>
+                                                        <input class="hola" asp-for="@Model.Id" type="hidden" value="@Model.Id" />
+                                                    </div>
+                                                </div>
+                                                <div class="modal-footer">
+                                                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                                    <button type="submit" class="btn btn-primary">Proceder</button>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </form>
+
+                                </div>
+
+                            </td>
+
+                        </tr>
+                    }
+                }
                 </tbody>
             </table>
 
