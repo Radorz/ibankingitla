@@ -3,6 +3,8 @@
 
     ViewData["Title"] = "Confirmacion";
     Layout = "~/Views/Shared/_ClienteLayout.cshtml";
+    ViewData["Usuario"] = User.Identity.Name.Trim();
+
 }
 <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
 <p class="text-primary h4" > Confirmaciond de Pago</p>

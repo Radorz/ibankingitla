@@ -1,9 +1,10 @@
 ﻿@model ViewModels.ManagementViewModel
 
  @{
+     ViewData["Usuario"] = User.Identity.Name.Trim();
 
-        ViewData["Title"] = "Management";
-        Layout = "~/Views/Shared/_AdminLayout.cshtml";
+     ViewData["Title"] = "Management";
+     Layout = "~/Views/Shared/_AdminLayout.cshtml";
     }
     <a asp-action="Create" class="btn btn-primary">Añadir nuevo</a>
 

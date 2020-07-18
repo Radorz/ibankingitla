@@ -2,6 +2,8 @@
 
     ViewData["Title"] = "Beneficiarios";
     Layout = "~/Views/Shared/_ClienteLayout.cshtml";
+    ViewData["Usuario"] = User.Identity.Name.Trim();
+
 }
 <a asp-action="Create" class="btn btn-primary">Añadir Beneficiario</a>
 
