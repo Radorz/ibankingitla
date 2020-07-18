@@ -22,13 +22,14 @@ namespace Ibanking_Itla.Controllers
         private readonly IMapper _mapper;
         private readonly AdminRepository _adminrepository;
         private readonly ProductosRepository _productsrepository;
-
-
+        private readonly PagosRepository _pagosrepository;
+        private readonly TransferenciasRepository _transrepository;
 
 
 
         public AdminController (UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager,
-            RoleManager<IdentityRole> role, IMapper mapper, AdminRepository adminrepository, ProductosRepository productsrepository)
+            RoleManager<IdentityRole> role, IMapper mapper, AdminRepository adminrepository, ProductosRepository productsrepository, PagosRepository pagosrepository,
+            TransferenciasRepository transrepository)
         {
 
             _userManager = userManager;
@@ -37,6 +38,10 @@ namespace Ibanking_Itla.Controllers
             this._mapper = mapper;
             this._adminrepository = adminrepository;
             this._productsrepository = productsrepository;
+            this._pagosrepository = pagosrepository;
+            this._transrepository = transrepository;
+
+
 
 
         }
@@ -46,6 +51,10 @@ namespace Ibanking_Itla.Controllers
            vm.ProductosAsignados= await _productsrepository.GetCOUNT();
             vm.ClientesActivos = await _adminrepository.GetCOUNTactive();
             vm.ClientesInactivos = await _adminrepository.GetCOUNTinactive();
+            vm.Pagoshoy = await _pagosrepository.GetCOUNTtoday();
+            vm.PagosTotales = await _pagosrepository.GetCOUNTall();
+            vm.Transaccioneshoy = await _transrepository.GetCOUNTtoday();
+            vm.Transaccionestotal = await _transrepository.GetCOUNTall();
             return View(vm);
         }
         
@@ -169,6 +178,23 @@ namespace Ibanking_Itla.Controllers
             return RedirectToAction("Management");
         }
         [HttpPost]
+        public async Task<IActionResult> addahorros(string id)
+
+        {
+            var productentity = new ProductosUsers();
+            productentity.Id = DateTime.Now.ToString("HHyfffmm");
+            productentity.Idusuario = id;
+            productentity.Idtipo = 1;
+            productentity.tipo = "Secundaria";
+            productentity.Balance = 0;
+            productentity.LimiteTarjeta = 0;
+            productentity.MontoPrestamo = 0;
+
+            await _productsrepository.Add(productentity);
+
+            return RedirectToAction("Edit", new { id = id });
+        }
+        [HttpPost]
         public async Task<IActionResult> AddTarjeta(string id, decimal LimiteNewTarjeta)
 
         {
@@ -201,6 +227,17 @@ namespace Ibanking_Itla.Controllers
             await _productsrepository.Add(productentity);
 
             return RedirectToAction("Edit", new { id = id });
+        }
+        [HttpPost]
+        public  async Task<IActionResult> deleteProduct(string id)
+
+        {
+
+            var delete = await _productsrepository.DeleteNew(id);
+            //await _productsrepository.DeleteNew(id);
+
+            return RedirectToAction("Edit", new { id = delete.Idusuario });
+            
         }
 
         [AcceptVerbs("GET", "POST")]

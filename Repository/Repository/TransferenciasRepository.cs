@@ -9,9 +9,9 @@ using System.Threading.Tasks;
 
 namespace Repository.Repository
 {
-    public class PagosRepository: RepositoryBase<Pagos, IbankingContext> 
+    public class TransferenciasRepository: RepositoryBase<Transacciones, IbankingContext> 
     {
-        public PagosRepository(IbankingContext context) : base(context)
+        public TransferenciasRepository(IbankingContext context) : base(context)
         {
 
         }
@@ -19,14 +19,14 @@ namespace Repository.Repository
         {
 
             
-              var pagos= await  base._context.Pagos.FromSqlRaw("select * from Pagos where cast(Fecha as date) = cast(getdate() as date)").ToListAsync();
+              var pagos= await  base._context.Transacciones.FromSqlRaw("select * from Transacciones where cast(Fecha as date) = cast(getdate() as date)").ToListAsync();
             return pagos.Where(a => a.Id == a.Id).Count();
         }
         public async Task<int> GetCOUNTall()
         {
 
 
-            var user = await base._context.Pagos.ToListAsync();
+            var user = await base._context.Transacciones.ToListAsync();
             return user.Where(a =>  a.Id == a.Id).Count();
         }
     }

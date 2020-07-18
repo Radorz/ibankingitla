@@ -38,7 +38,20 @@ namespace Repository.Repository
         }
 
 
+        public async Task<ProductosUsers> DeleteNew(string id)
+        {
+            var entity = await _context.Set<ProductosUsers>().FindAsync(id);
+            if (entity == null)
+            {
 
+                return entity;
+            }
+            _context.Set<ProductosUsers>().Remove(entity);
+            await _context.SaveChangesAsync();
+            return entity;
+
+
+        }
 
 
     }

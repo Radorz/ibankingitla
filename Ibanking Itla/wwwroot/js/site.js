@@ -25,3 +25,26 @@ $('#exampleModal3').on('show.bs.modal', function (event) {
 	modal.find('.modal-body .hola').val(id)
 
 })
+
+$('#exampleModal4').on('show.bs.modal', function (event) {
+	var button = $(event.relatedTarget)
+	var id = button.data('id')
+	var modal = $(this)
+	modal.find('.modal-body .hola').val(id)
+
+})
+$('#exampleModal5').on('show.bs.modal', function (event) {
+	var button = $(event.relatedTarget)
+	var id = button.data('id')
+	var modal = $(this)
+	modal.find('.modal-body .hola').val(id)
+
+})
+
+$('#exampleModal6').on('show.bs.modal', function (event) {
+	var button = $(event.relatedTarget)
+	var id = button.data('id')
+	var modal = $(this)
+	modal.find('.modal-body .hola').val(id)
+
+})

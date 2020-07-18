@@ -84,6 +84,10 @@ namespace Ibanking_Itla
             services.AddAutoMapper(typeof(AutoMapperConfi).GetTypeInfo().Assembly);
             services.AddScoped<AdminRepository>();
             services.AddScoped<ProductosRepository>();
+            services.AddScoped<PagosRepository>();
+            services.AddScoped<TransferenciasRepository>();
+
+
 
 
         }
