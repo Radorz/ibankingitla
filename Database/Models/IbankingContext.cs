@@ -85,6 +85,10 @@ namespace Database.Models
                    .HasMaxLength(20);
 
                 entity.Property(e => e.Balance).HasColumnType("decimal(19, 2)");
+                entity.Property(e => e.LimiteTarjeta).HasColumnType("decimal(19, 2)");
+                entity.Property(e => e.MontoPrestamo).HasColumnType("decimal(19, 2)");
+
+
 
 
                 entity.HasOne(d => d.IdtipoNavigation)

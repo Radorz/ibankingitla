@@ -18,6 +18,11 @@ namespace Database.Models
         public int Idtipo { get; set; }
         public string tipo { get; set; }
         public decimal Balance { get; set; }
+        public decimal LimiteTarjeta { get; set; }
+
+        public decimal MontoPrestamo { get; set; }
+
+
 
 
         public virtual TiposProductos IdtipoNavigation { get; set; }

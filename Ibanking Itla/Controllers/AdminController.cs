@@ -122,7 +122,23 @@ namespace Ibanking_Itla.Controllers
             vm.Tarjetas = await _productsrepository.GetAllTarjetas(id);
             vm.Prestamos = await _productsrepository.GetAllPrestamos(id);
 
+            foreach (var item in vm.Ahorros)
+            {
+                vm.BalanceCuentaAhorro = vm.BalanceCuentaAhorro + item.Balance;
 
+            }
+              foreach (var item in vm.Tarjetas)
+            {
+                vm.DisponibleTarjeta = vm.BalanceTarjeta + item.Balance;
+                vm.BalanceTarjeta = vm.BalanceTarjeta + (item.LimiteTarjeta - item.Balance);
+
+            }
+
+            foreach (var item in vm.Prestamos)
+            {
+                vm.BalancePrestamo = vm.BalancePrestamo + (item.LimiteTarjeta - item.Balance);
+
+            }
 
 
             return View(vm);

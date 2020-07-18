@@ -101,18 +101,18 @@
                 <i class="fa fa-usd" aria-hidden="true"></i>
                 Disponible
             </strong>
-            <p class="text-muted ml-5">DOP 20,000</p>
+            <p class="text-muted ml-5">DOP @Model.BalanceCuentaAhorro.ToString("C") </p>
 
         </div>
 
         <div id="accordion">
             <div>
                 <h5 class="mb-0 text-right">
-                    <button class="btn btn-link collapsed dropdown-toggle" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+                    <button class="btn btn-link collapsed dropdown-toggle" data-toggle="collapse" data-target="#collapseOne" aria-expanded="false" aria-controls="collapseOne">
                         Mostrar Cuentas
                     </button>
                 </h5>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
+                <div id="collapseOne" class="collapse" aria-labelledby="headingTwo" data-parent="#accordion">
                     <div class="card-body">
                         <table class="table">
                             <thead>
@@ -156,7 +156,7 @@
                     <i class="fa fa-usd" aria-hidden="true"></i>
                     Disponible
                 </strong>
-                <p class="text-muted ml-5">DOP 20,000</p>
+                <p class="text-muted ml-5">DOP @Model.DisponibleTarjeta.ToString("C")</p>
 
             </div>
             <div class="ml-lg-5 float-left">
@@ -164,7 +164,7 @@
                     <i class="fa fa-usd" aria-hidden="true"></i>
                     Balance a pagar
                 </strong>
-                <p class="text-muted ml-5">DOP 20,000</p>
+                <p class="text-muted ml-5">DOP @Model.BalanceTarjeta.ToString("C")</p>
 
             </div>
         </div>
@@ -175,11 +175,11 @@
         <div id="accordion">
             <div class="">
                 <h5 class="mb-0 text-right">
-                    <button class="btn btn-link collapsed dropdown-toggle" data-toggle="collapse" data-target="#collapsethree" aria-expanded="false" aria-controls="collapsethree">
+                    <button class="btn btn-link collapsed dropdown-toggle" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
                         Mostrar Tarjetas
                     </button>
                 </h5>
-                <div id="collapsethree" class="collapse" aria-labelledby="headingthree" data-parent="#accordion">
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingthree" data-parent="#accordion">
                     <div class="card-body">
                         <table class="table">
                             <thead>
@@ -188,7 +188,7 @@
                                     <th scope="col">Numero</th>
                                     <th scope="col">Disponible</th>
                                     <th scope="col">Balance al corte</th>
-                                    <th scope="col">Estado</th>
+                                    <th scope="col">Limite</th>
 
                                 </tr>
                             </thead>
@@ -196,13 +196,16 @@
                                 @foreach (var item in Model.Tarjetas)
                                 {
                                     var balance = item.Balance.ToString("C");
+                                    var Limite = item.LimiteTarjeta.ToString("C");
+                                    var balancecorte = (item.LimiteTarjeta - item.Balance).ToString("C");
+
                                     <tr class="text-center">
 
                                         <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.Idtipo)</td>
-                                        <td>DO</td>
-
                                         <td>@Html.DisplayFor(modelItem => balance)</td>
+                                        <td>@Html.DisplayFor(modelItem => balancecorte)</td>
+
+                                        <td>@Html.DisplayFor(modelItem => Limite)</td>
                                     </tr>
                                 }
 
@@ -222,7 +225,7 @@
                     <i class="fa fa-usd" aria-hidden="true"></i>
                     Balance Pendiente
                 </strong>
-                <p class="text-muted ml-5">DOP 20,000</p>
+                <p class="text-muted ml-5">DOP @Model.BalancePrestamo.ToString("C")</p>
 
             </div>
 
@@ -247,13 +250,25 @@
                                     <th scope="col">Referencia</th>
                                     <th scope="col">Monto</th>
                                     <th scope="col">Pendiente</th>
-                                    <th scope="col">Estado</th>
                                     <th scope="col"></th>
 
 
                                 </tr>
                             </thead>
                             <tbody>
+                                @foreach (var item in Model.Prestamos)
+                                {
+                                    var balance = item.Balance.ToString("C");
+                                    var Monto = item.MontoPrestamo.ToString("C");
+                                    var balancecorte = (item.LimiteTarjeta - item.Balance).ToString("C");
+
+                                    <tr class="text-center">
+
+                                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                                        <td>@Html.DisplayFor(modelItem => Monto)</td>
+                                        <td>@Html.DisplayFor(modelItem => balance)</td>
+                                    </tr>
+                                }
                             </tbody>
                         </table>
                     </div>
