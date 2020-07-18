@@ -1,9 +1,126 @@
-create database Ibanking
-go
+USE [master]
+GO
+
+/****** Object:  Database [Ibanking]    Script Date: 17/7/2020 9:02:32 p. m. ******/
+CREATE DATABASE [Ibanking]
+ CONTAINMENT = NONE
+ ON  PRIMARY 
+( NAME = N'Ibanking', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER01\MSSQL\DATA\Ibanking.mdf' , SIZE = 8192KB , MAXSIZE = UNLIMITED, FILEGROWTH = 65536KB )
+ LOG ON 
+( NAME = N'Ibanking_log', FILENAME = N'C:\Program Files\Microsoft SQL Server\MSSQL14.MSSQLSERVER01\MSSQL\DATA\Ibanking_log.ldf' , SIZE = 8192KB , MAXSIZE = 2048GB , FILEGROWTH = 65536KB )
+GO
+
+ALTER DATABASE [Ibanking] SET COMPATIBILITY_LEVEL = 140
+GO
+
+IF (1 = FULLTEXTSERVICEPROPERTY('IsFullTextInstalled'))
+begin
+EXEC [Ibanking].[dbo].[sp_fulltext_database] @action = 'enable'
+end
+GO
+
+ALTER DATABASE [Ibanking] SET ANSI_NULL_DEFAULT OFF 
+GO
+
+ALTER DATABASE [Ibanking] SET ANSI_NULLS OFF 
+GO
+
+ALTER DATABASE [Ibanking] SET ANSI_PADDING OFF 
+GO
+
+ALTER DATABASE [Ibanking] SET ANSI_WARNINGS OFF 
+GO
+
+ALTER DATABASE [Ibanking] SET ARITHABORT OFF 
+GO
+
+ALTER DATABASE [Ibanking] SET AUTO_CLOSE OFF 
+GO
+
+ALTER DATABASE [Ibanking] SET AUTO_SHRINK OFF 
+GO
+
+ALTER DATABASE [Ibanking] SET AUTO_UPDATE_STATISTICS ON 
+GO
+
+ALTER DATABASE [Ibanking] SET CURSOR_CLOSE_ON_COMMIT OFF 
+GO
+
+ALTER DATABASE [Ibanking] SET CURSOR_DEFAULT  GLOBAL 
+GO
+
+ALTER DATABASE [Ibanking] SET CONCAT_NULL_YIELDS_NULL OFF 
+GO
+
+ALTER DATABASE [Ibanking] SET NUMERIC_ROUNDABORT OFF 
+GO
+
+ALTER DATABASE [Ibanking] SET QUOTED_IDENTIFIER OFF 
+GO
+
+ALTER DATABASE [Ibanking] SET RECURSIVE_TRIGGERS OFF 
+GO
+
+ALTER DATABASE [Ibanking] SET  ENABLE_BROKER 
+GO
+
+ALTER DATABASE [Ibanking] SET AUTO_UPDATE_STATISTICS_ASYNC OFF 
+GO
+
+ALTER DATABASE [Ibanking] SET DATE_CORRELATION_OPTIMIZATION OFF 
+GO
+
+ALTER DATABASE [Ibanking] SET TRUSTWORTHY OFF 
+GO
+
+ALTER DATABASE [Ibanking] SET ALLOW_SNAPSHOT_ISOLATION OFF 
+GO
+
+ALTER DATABASE [Ibanking] SET PARAMETERIZATION SIMPLE 
+GO
+
+ALTER DATABASE [Ibanking] SET READ_COMMITTED_SNAPSHOT OFF 
+GO
+
+ALTER DATABASE [Ibanking] SET HONOR_BROKER_PRIORITY OFF 
+GO
+
+ALTER DATABASE [Ibanking] SET RECOVERY FULL 
+GO
+
+ALTER DATABASE [Ibanking] SET  MULTI_USER 
+GO
+
+ALTER DATABASE [Ibanking] SET PAGE_VERIFY CHECKSUM  
+GO
+
+ALTER DATABASE [Ibanking] SET DB_CHAINING OFF 
+GO
+
+ALTER DATABASE [Ibanking] SET FILESTREAM( NON_TRANSACTED_ACCESS = OFF ) 
+GO
+
+ALTER DATABASE [Ibanking] SET TARGET_RECOVERY_TIME = 60 SECONDS 
+GO
+
+ALTER DATABASE [Ibanking] SET DELAYED_DURABILITY = DISABLED 
+GO
+
+ALTER DATABASE [Ibanking] SET QUERY_STORE = OFF
+GO
+
+ALTER DATABASE [Ibanking] SET  READ_WRITE 
+GO
+
 USE [Ibanking]
 GO
 
+/****** Object:  Table [dbo].[AspNetRoleClaims]    Script Date: 17/7/2020 9:03:50 p. m. ******/
+SET ANSI_NULLS ON
+GO
 
+SET QUOTED_IDENTIFIER ON
+GO
 
 CREATE TABLE [dbo].[AspNetRoleClaims](
 	[Id] [int] IDENTITY(1,1) NOT NULL,
@@ -25,7 +142,15 @@ GO
 ALTER TABLE [dbo].[AspNetRoleClaims] CHECK CONSTRAINT [FK_AspNetRoleClaims_AspNetRoles_RoleId]
 GO
 
+USE [Ibanking]
+GO
 
+/****** Object:  Table [dbo].[AspNetRoles]    Script Date: 17/7/2020 9:04:03 p. m. ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
 
 CREATE TABLE [dbo].[AspNetRoles](
 	[Id] [nvarchar](450) NOT NULL,
@@ -37,6 +162,17 @@ CREATE TABLE [dbo].[AspNetRoles](
 	[Id] ASC
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
+GO
+
+
+USE [Ibanking]
+GO
+
+/****** Object:  Table [dbo].[AspNetUserClaims]    Script Date: 17/7/2020 9:05:45 p. m. ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
 GO
 
 CREATE TABLE [dbo].[AspNetUserClaims](
@@ -59,6 +195,15 @@ GO
 ALTER TABLE [dbo].[AspNetUserClaims] CHECK CONSTRAINT [FK_AspNetUserClaims_AspNetUsers_UserId]
 GO
 
+USE [Ibanking]
+GO
+
+/****** Object:  Table [dbo].[AspNetUserLogins]    Script Date: 17/7/2020 9:05:52 p. m. ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
 
 CREATE TABLE [dbo].[AspNetUserLogins](
 	[LoginProvider] [nvarchar](450) NOT NULL,
@@ -81,6 +226,15 @@ GO
 ALTER TABLE [dbo].[AspNetUserLogins] CHECK CONSTRAINT [FK_AspNetUserLogins_AspNetUsers_UserId]
 GO
 
+USE [Ibanking]
+GO
+
+/****** Object:  Table [dbo].[AspNetUserRoles]    Script Date: 17/7/2020 9:06:01 p. m. ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
 
 CREATE TABLE [dbo].[AspNetUserRoles](
 	[UserId] [nvarchar](450) NOT NULL,
@@ -109,6 +263,15 @@ GO
 ALTER TABLE [dbo].[AspNetUserRoles] CHECK CONSTRAINT [FK_AspNetUserRoles_AspNetUsers_UserId]
 GO
 
+USE [Ibanking]
+GO
+
+/****** Object:  Table [dbo].[AspNetUsers]    Script Date: 17/7/2020 9:06:09 p. m. ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
 
 CREATE TABLE [dbo].[AspNetUsers](
 	[Id] [nvarchar](450) NOT NULL,
@@ -133,6 +296,15 @@ CREATE TABLE [dbo].[AspNetUsers](
 ) ON [PRIMARY] TEXTIMAGE_ON [PRIMARY]
 GO
 
+USE [Ibanking]
+GO
+
+/****** Object:  Table [dbo].[AspNetUserTokens]    Script Date: 17/7/2020 9:06:29 p. m. ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
 
 CREATE TABLE [dbo].[AspNetUserTokens](
 	[UserId] [nvarchar](450) NOT NULL,
@@ -155,7 +327,15 @@ GO
 
 ALTER TABLE [dbo].[AspNetUserTokens] CHECK CONSTRAINT [FK_AspNetUserTokens_AspNetUsers_UserId]
 GO
+USE [Ibanking]
+GO
 
+/****** Object:  Table [dbo].[Pagos]    Script Date: 17/7/2020 9:07:15 p. m. ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
 
 CREATE TABLE [dbo].[Pagos](
 	[id] [int] IDENTITY(1,1) NOT NULL,
@@ -193,10 +373,22 @@ ALTER TABLE [dbo].[Pagos] CHECK CONSTRAINT [FK_Table_1_ProductosUsersDestino]
 GO
 
 
+USE [Ibanking]
+GO
+
+/****** Object:  Table [dbo].[ProductosUsers]    Script Date: 17/7/2020 9:07:58 p. m. ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
 CREATE TABLE [dbo].[ProductosUsers](
 	[id] [nchar](450) NOT NULL,
 	[idusuario] [nvarchar](450) NOT NULL,
 	[idtipo] [int] NOT NULL,
+	[tipo] [varchar](20) NULL,
+	[Balance] [decimal](19, 2) NULL,
  CONSTRAINT [PK_ProductosUsers] PRIMARY KEY CLUSTERED 
 (
 	[id] ASC
@@ -218,6 +410,16 @@ GO
 ALTER TABLE [dbo].[ProductosUsers] CHECK CONSTRAINT [FK_ProductosUsers_Users]
 GO
 
+USE [Ibanking]
+GO
+
+/****** Object:  Table [dbo].[TiposProductos]    Script Date: 17/7/2020 9:08:05 p. m. ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
+
 CREATE TABLE [dbo].[TiposProductos](
 	[id] [int] IDENTITY(1,1) NOT NULL,
 	[NombreProducto] [nchar](200) NULL,
@@ -228,6 +430,15 @@ PRIMARY KEY CLUSTERED
 ) ON [PRIMARY]
 GO
 
+USE [Ibanking]
+GO
+
+/****** Object:  Table [dbo].[Transacciones]    Script Date: 17/7/2020 9:08:12 p. m. ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
 
 CREATE TABLE [dbo].[Transacciones](
 	[id] [int] IDENTITY(1,1) NOT NULL,
@@ -256,6 +467,15 @@ GO
 ALTER TABLE [dbo].[Transacciones] CHECK CONSTRAINT [FK_Transacciones_ProductosUsersorigen]
 GO
 
+USE [Ibanking]
+GO
+
+/****** Object:  Table [dbo].[Users]    Script Date: 17/7/2020 9:08:22 p. m. ******/
+SET ANSI_NULLS ON
+GO
+
+SET QUOTED_IDENTIFIER ON
+GO
 
 CREATE TABLE [dbo].[Users](
 	[id] [nvarchar](450) NOT NULL,
@@ -273,6 +493,11 @@ PRIMARY KEY CLUSTERED
 )WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON) ON [PRIMARY]
 ) ON [PRIMARY]
 GO
+
+
+
+
+
 
 
 USE [Ibanking]
