@@ -109,7 +109,7 @@ namespace Ibanking_Itla.Controllers
                             productentity.Id = DateTime.Now.ToString("HHyfffmm");
                             productentity.Idusuario = user.Id;
                             productentity.Idtipo = 1;
-                            productentity.tipo = "Principal";
+                            productentity.Tipo = "Principal";
 
                             await _productsrepository.Add(productentity);
 
@@ -185,7 +185,7 @@ namespace Ibanking_Itla.Controllers
             productentity.Id = DateTime.Now.ToString("HHyfffmm");
             productentity.Idusuario = id;
             productentity.Idtipo = 1;
-            productentity.tipo = "Secundaria";
+            productentity.Tipo = "Secundaria";
             productentity.Balance = 0;
             productentity.LimiteTarjeta = 0;
             productentity.MontoPrestamo = 0;
@@ -202,7 +202,7 @@ namespace Ibanking_Itla.Controllers
             productentity.Id = DateTime.Now.ToString("HHyfffmm");
             productentity.Idusuario = id;
             productentity.Idtipo = 3;
-            productentity.tipo = "Credito";
+            productentity.Tipo = "Credito";
             productentity.Balance = 0;
             productentity.LimiteTarjeta = LimiteNewTarjeta;
             productentity.MontoPrestamo = 0;
@@ -219,7 +219,7 @@ namespace Ibanking_Itla.Controllers
             productentity.Id = DateTime.Now.ToString("HHyfffmm");
             productentity.Idusuario = id;
             productentity.Idtipo = 2;
-            productentity.tipo = "Deuda";
+            productentity.Tipo = "Deuda";
             productentity.Balance = 0;
             productentity.LimiteTarjeta = 0;
             productentity.MontoPrestamo = MontonewPrestamo;

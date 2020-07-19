@@ -7,7 +7,7 @@ namespace Database.Models
     {
         public Users()
         {
-            ProductosUsers = new HashSet<ProductosUsers>();
+            Beneficiarios = new HashSet<Beneficiarios>();
         }
 
         public string Id { get; set; }
@@ -20,7 +20,6 @@ namespace Database.Models
         public string Tipo { get; set; }
         public string Estado { get; set; }
 
-
-        public virtual ICollection<ProductosUsers> ProductosUsers { get; set; }
+        public virtual ICollection<Beneficiarios> Beneficiarios { get; set; }
     }
 }

@@ -26,6 +26,11 @@ namespace Repository.Repository
 
             return await base._context.ProductosUsers.Where(a=>(a.Idtipo==1)&&(a.Idusuario==id)).ToListAsync();
         }
+        public async Task<List<ProductosUsers>> GetAllCuentaForVerify()
+        {
+
+            return await base._context.ProductosUsers.Where(a => (a.Idtipo == 1)).ToListAsync();
+        }
         public async Task<List<ProductosUsers>> GetAllTarjetas(string id)
         {
 
@@ -51,6 +56,10 @@ namespace Repository.Repository
             return entity;
 
 
+        }
+        public async Task<ProductosUsers> GetbyIdnew(int id)
+        {
+            return await _context.Set<ProductosUsers>().FindAsync(id.ToString());
         }
 
 

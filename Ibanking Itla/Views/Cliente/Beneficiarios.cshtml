@@ -1,11 +1,43 @@
-﻿@{
+﻿@model ViewModels.BeneficiariosViewModel
+@{
 
     ViewData["Title"] = "Beneficiarios";
     Layout = "~/Views/Shared/_ClienteLayout.cshtml";
     ViewData["Usuario"] = User.Identity.Name.Trim();
 
 }
-<a asp-action="Create" class="btn btn-primary">Añadir Beneficiario</a>
+<a class="btn btn-primary" data-toggle="modal" data-target="#exampleModal6">Añadir Beneficiario</a>
+
+<div class="modal fade" id="exampleModal6" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <form asp-action="Addbenefi" method="post">
+
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel">Añadir Beneficiario</h5>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="form-group justify-content-md-center"   >
+                        <div class="text-center">
+                            <span asp-validation-for="@Model.newbeneficiario" class="text-danger"></span>
+                        </div>
+                        <input  class="form-control" asp-for="@Model.newbeneficiario" type="tel" />
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                    <button type="submit" class="btn btn-primary">Proceder</button>
+
+                </div>
+
+            </div>
+        </div>
+    </form>
+
+</div>
 
 <div class=" bg-light  text-black-50 text-center">
     <div class="card-header">
@@ -17,19 +49,65 @@
             <thead class="thead-dark">
 
                 <tr>
-                    <th scope="col">Id</th>
                     <th scope="col">Nombre</th>
                     <th scope="col">Apellido</th>
-                    <th scope="col">Estado</th>
-                    <th scope="col">Carrera</th>
+                    <th scope="col">Cuenta</th>
                     <th scope="col">Opciones</th>
+
+
 
                 </tr>
             </thead>
             <tbody>
-            </tbody>
+
+                @foreach (var item in Model.Beneficiarios)
+                {
+                                     
+                <tr>
+                    <td>@Html.DisplayFor(modelItem => item.Nombre)</td>
+                    <td>@Html.DisplayFor(modelItem => item.Apellido)</td>
+                    <td>@Html.DisplayFor(modelItem => item.NoCuenta)</td>
+                    <td>
+                        <a href="#" data-toggle="modal" data-target="#exampleModal5" data-id="@item.Id"><i class="fa fa-trash" aria-hidden="true" style="color:red "></i></a>
+
+                        <div class="modal fade" id="exampleModal5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <form asp-action="deleteBenefi" method="post">
+
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Eliminar Beneficiario</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body">
+                                            <div class="form-group">
+                                                <p>¿Estas seguro que quieres eliminar este beneficiario?</p>
+                                                <input class="hola"  type="hidden" asp-for="@Model.deletebeneficiario" value="@Model.deletebeneficiario"/>
+                                            </div>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
+                                            <button type="submit" class="btn btn-primary">Proceder</button>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </form>
+
+                        </div>
+                    </td>
+                </tr>
+
+                    }
+                </tbody>
         </table>
 
     </div>
 
 </div>
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

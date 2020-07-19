@@ -86,6 +86,8 @@ namespace Ibanking_Itla
             services.AddScoped<ProductosRepository>();
             services.AddScoped<PagosRepository>();
             services.AddScoped<TransferenciasRepository>();
+            services.AddScoped<BeneficiariosRepository>();
+
 
 
 

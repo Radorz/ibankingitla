@@ -163,11 +163,11 @@
                                     <tr class="text-center">
 
                                         <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                                        <td>@Html.DisplayFor(modelItem => item.tipo)</td>
+                                        <td>@Html.DisplayFor(modelItem => item.Tipo)</td>
                                         <td>DO</td>
 
                                         <td>@Html.DisplayFor(modelItem => balance)</td>
-                                        @if (item.tipo.Trim() != "Principal")
+                                        @if (item.Tipo.Trim() != "Principal")
                                         {
                                     <td>
                                         <a href="#" data-toggle="modal" data-target="#exampleModal6" data-id="@item.Id"><i class="fa fa-trash" aria-hidden="true" style="color:red "></i></a>
@@ -247,7 +247,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingthree" data-parent="#accordion">
                     <a class="btn-link" href="#" data-toggle="modal" data-target="#exampleModal2" data-id="@Model.Id">+ Añadir Tarjeta de Credito</a>
                     <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <form asp-action="AddTarjeta" method="post">
+                        <form asp-action="AddBeneficiarios" method="post">
 
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">

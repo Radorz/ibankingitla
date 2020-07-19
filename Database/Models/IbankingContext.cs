@@ -16,6 +16,8 @@ namespace Database.Models
         {
         }
 
+       
+        public virtual DbSet<Beneficiarios> Beneficiarios { get; set; }
         public virtual DbSet<Pagos> Pagos { get; set; }
         public virtual DbSet<ProductosUsers> ProductosUsers { get; set; }
         public virtual DbSet<TiposProductos> TiposProductos { get; set; }
@@ -32,8 +34,99 @@ namespace Database.Models
         }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
+
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<AspNetRoleClaims>(entity =>
+            {
+                entity.Property(e => e.RoleId)
+                    .IsRequired()
+                    .HasMaxLength(450);
+            });
+
+            modelBuilder.Entity<AspNetRoles>(entity =>
+            {
+                entity.Property(e => e.Name).HasMaxLength(256);
+
+                entity.Property(e => e.NormalizedName).HasMaxLength(256);
+            });
+
+            modelBuilder.Entity<AspNetUserClaims>(entity =>
+            {
+                entity.Property(e => e.UserId)
+                    .IsRequired()
+                    .HasMaxLength(450);
+            });
+
+            modelBuilder.Entity<AspNetUserLogins>(entity =>
+            {
+                entity.HasKey(e => new { e.LoginProvider, e.ProviderKey });
+
+                entity.Property(e => e.UserId)
+                    .IsRequired()
+                    .HasMaxLength(450);
+            });
+
+            modelBuilder.Entity<AspNetUserRoles>(entity =>
+            {
+                entity.HasKey(e => new { e.UserId, e.RoleId });
+
+                entity.HasOne(d => d.Role)
+                    .WithMany(p => p.AspNetUserRoles)
+                    .HasForeignKey(d => d.RoleId);
+            });
+
+            modelBuilder.Entity<AspNetUserTokens>(entity =>
+            {
+                entity.HasKey(e => new { e.UserId, e.LoginProvider, e.Name });
+
+                entity.HasOne(d => d.User)
+                    .WithMany(p => p.AspNetUserTokens)
+                    .HasForeignKey(d => d.UserId);
+            });
+
+            modelBuilder.Entity<AspNetUsers>(entity =>
+            {
+                entity.Property(e => e.Email).HasMaxLength(256);
+
+                entity.Property(e => e.NormalizedEmail).HasMaxLength(256);
+
+                entity.Property(e => e.NormalizedUserName).HasMaxLength(256);
+
+                entity.Property(e => e.UserName).HasMaxLength(256);
+            });
+
+            modelBuilder.Entity<Beneficiarios>(entity =>
+            {
+                entity.Property(e => e.Id).HasColumnName("ID");
+
+                entity.Property(e => e.Apellido)
+                    .IsRequired()
+                    .HasMaxLength(45)
+                    .IsFixedLength();
+
+                entity.Property(e => e.Idcreador)
+                    .IsRequired()
+                    .HasColumnName("idcreador")
+                    .HasMaxLength(450);
+
+                entity.Property(e => e.NoCuenta)
+                    .IsRequired()
+                    .HasMaxLength(450)
+                    .IsFixedLength();
+
+                entity.Property(e => e.Nombre)
+                    .HasMaxLength(45)
+                    .IsFixedLength();
+
+                entity.HasOne(d => d.IdcreadorNavigation)
+                    .WithMany(p => p.Beneficiarios)
+                    .HasForeignKey(d => d.Idcreador)
+                    .OnDelete(DeleteBehavior.ClientSetNull)
+                    .HasConstraintName("FK_Beneficiarios_Users");
+            });
+
             modelBuilder.Entity<Pagos>(entity =>
             {
                 entity.Property(e => e.Id).HasColumnName("id");
@@ -49,21 +142,6 @@ namespace Database.Models
                 entity.Property(e => e.ProductoOrigen)
                     .HasMaxLength(450)
                     .IsFixedLength();
-
-                entity.HasOne(d => d.ProductoDestinoNavigation)
-                    .WithMany(p => p.PagosProductoDestinoNavigation)
-                    .HasForeignKey(d => d.ProductoDestino)
-                    .HasConstraintName("FK_Table_1_ProductosUsersDestino");
-
-                entity.HasOne(d => d.ProductoOrigenNavigation)
-                    .WithMany(p => p.PagosProductoOrigenNavigation)
-                    .HasForeignKey(d => d.ProductoOrigen)
-                    .HasConstraintName("FK_Pagos_ProductosUsers");
-
-                entity.HasOne(d => d.TipoProductoNavigation)
-                    .WithMany(p => p.Pagos)
-                    .HasForeignKey(d => d.TipoProducto)
-                    .HasConstraintName("FK_Pagos_TiposProductos");
             });
 
             modelBuilder.Entity<ProductosUsers>(entity =>
@@ -72,36 +150,23 @@ namespace Database.Models
                     .HasColumnName("id")
                     .IsFixedLength();
 
+                entity.Property(e => e.Balance).HasColumnType("decimal(19, 2)");
+
                 entity.Property(e => e.Idtipo).HasColumnName("idtipo");
 
                 entity.Property(e => e.Idusuario)
                     .IsRequired()
                     .HasColumnName("idusuario")
                     .HasMaxLength(450);
-            
-                entity.Property(e => e.tipo)
-                   .IsRequired()
-                   .HasColumnName("tipo")
-                   .HasMaxLength(20);
 
-                entity.Property(e => e.Balance).HasColumnType("decimal(19, 2)");
                 entity.Property(e => e.LimiteTarjeta).HasColumnType("decimal(19, 2)");
+
                 entity.Property(e => e.MontoPrestamo).HasColumnType("decimal(19, 2)");
 
-
-
-
-                entity.HasOne(d => d.IdtipoNavigation)
-                    .WithMany(p => p.ProductosUsers)
-                    .HasForeignKey(d => d.Idtipo)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_ProductosUsers_TiposProductos");
-
-                entity.HasOne(d => d.IdusuarioNavigation)
-                    .WithMany(p => p.ProductosUsers)
-                    .HasForeignKey(d => d.Idusuario)
-                    .OnDelete(DeleteBehavior.ClientSetNull)
-                    .HasConstraintName("FK_ProductosUsers_Users");
+                entity.Property(e => e.Tipo)
+                    .HasColumnName("tipo")
+                    .HasMaxLength(20)
+                    .IsUnicode(false);
             });
 
             modelBuilder.Entity<TiposProductos>(entity =>
@@ -160,19 +225,20 @@ namespace Database.Models
                     .HasMaxLength(50)
                     .IsFixedLength();
 
-                entity.Property(e => e.Nombre)
-                    .HasMaxLength(100)
+                entity.Property(e => e.Estado)
+                    .HasMaxLength(10)
                     .IsFixedLength();
 
-                entity.Property(e => e.Usuario)
-                    .HasMaxLength(50)
+                entity.Property(e => e.Nombre)
+                    .HasMaxLength(100)
                     .IsFixedLength();
 
                 entity.Property(e => e.Tipo)
                     .HasMaxLength(10)
                     .IsFixedLength();
-                entity.Property(e => e.Estado)
-                    .HasMaxLength(10)
+
+                entity.Property(e => e.Usuario)
+                    .HasMaxLength(50)
                     .IsFixedLength();
             });
 
@@ -180,5 +246,6 @@ namespace Database.Models
         }
 
         partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
+       
     }
 }
