@@ -39,6 +39,7 @@ namespace Ibanking_Itla.Infraestructure.Automapper
 
 
         }
+      
         private void ConfigureManager()
         {
             CreateMap<Users, ManagementViewModel>().ReverseMap();

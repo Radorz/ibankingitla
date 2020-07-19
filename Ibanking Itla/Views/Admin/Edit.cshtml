@@ -31,7 +31,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-address-card"></i> </span>
                         </div>
-                        <input asp-for="Nombre" class="form-control" placeholder="Nombre" type="text">
+                        <input asp-for="Nombre" class="form-control" placeholder="Nombre" type="text" value="@Model.Nombre.Trim()">
                     </div>
                     <div class="text-center">
                         <span asp-validation-for="Apellido" class="text-danger"></span>
@@ -40,7 +40,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-address-card"></i> </span>
                         </div>
-                        <input asp-for="Apellido" class="form-control" placeholder="Apellido" type="text">
+                        <input asp-for="Apellido" class="form-control" placeholder="Apellido" type="text" value="@Model.Apellido.Trim()">
 
                     </div>
                     <div class="text-center">
@@ -50,7 +50,17 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                         </div>
-                        <input asp-for="Correo" class="form-control" placeholder="Email" type="email">
+                        <input asp-for="Correo" class="form-control" placeholder="Email" type="email" value="@Model.Correo.Trim()">
+
+                    </div>
+                    <div class="text-center">
+                        <span asp-validation-for="Cedula" class="text-danger"></span>
+                    </div>
+                    <div class="form-group input-group">
+                        <div class="input-group-prepend">
+                            <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
+                        </div>
+                        <input asp-for="Cedula" class="form-control" placeholder="Cedula" type="number" value="@Model.Cedula.Trim()">
 
                     </div>
 
@@ -63,7 +73,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i class="fa fa-money"></i> </span>
                             </div>
-                            <input asp-for="MontoAñadido" class="form-control" placeholder="Añadirbalance" type="tel">
+                            <input asp-for="MontoAñadido" class="form-control" placeholder="Añadirbalance" type="number">
                         </div>
                     }
                     <div class="text-center">
@@ -73,7 +83,7 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                         </div>
-                        <input asp-for="Contraseña" class="form-control" placeholder="Editar password" type="password" id="Contraseña" name="Contraseña">
+                        <input asp-for="Contraseña" class="form-control" placeholder="Editar password" type="password" id="Contraseña" name="Contraseña" value="@Model.Contraseña.Trim()">
                     </div>
                     <div class="text-center">
                         <span asp-validation-for="RepeatContraseña" class="text-danger"></span>
@@ -82,10 +92,14 @@
                         <div class="input-group-prepend">
                             <span class="input-group-text"> <i class="fa fa-lock"></i> </span>
                         </div>
-                        <input asp-for="RepeatContraseña" class="form-control" placeholder="Repetir password" type="password">
+                        <input asp-for="RepeatContraseña" class="form-control" placeholder="Repetir password" type="password" value="@Model.Contraseña.Trim()">
 
 
                     </div>
+                    <input asp-for="Usuario" class="form-control" placeholder="Repetir password" type="hidden" value="@Model.Usuario.Trim()">
+                    <input asp-for="Tipo" class="form-control" placeholder="Repetir password" type="hidden" value="@Model.Tipo.Trim()">
+                    <input asp-for="Estado" class="form-control" placeholder="Repetir password" type="hidden" value="@Model.Estado.Trim()">
+
                     <div class="form-group">
                         <button type="submit" class="btn btn-primary btn-block"> Editar Cuenta  </button>
                     </div>
@@ -266,7 +280,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"> <i class="fa fa-money"></i> </span>
                                                 </div>
-                                                <input  class="form-control" placeholder="Limite de gasto" type="tel"asp-for="LimiteNewTarjeta">
+                                                <input  class="form-control" placeholder="Limite de gasto" type="number"asp-for="LimiteNewTarjeta">
                                             </div> <input class="hola" asp-for="@Model.Id" type="hidden" value="@Model.Id" />
                                         </div>
                                     </div>
@@ -433,7 +447,7 @@
                                                 <div class="input-group-prepend">
                                                     <span class="input-group-text"> <i class="fa fa-money"></i> </span>
                                                 </div>
-                                                <input class="form-control" placeholder="Monto de Prestamo" type="tel" asp-for="MontonewPrestamo">
+                                                <input class="form-control" placeholder="Monto de Prestamo" type="number" asp-for="MontonewPrestamo">
                                             </div> <input class="hola" asp-for="@Model.Id" type="hidden" value="@Model.Id" />
                                         </div>
                                     </div>

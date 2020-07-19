@@ -47,6 +47,9 @@ namespace ViewModels
         [Compare("Contraseña", ErrorMessage = "Las contraseña no coinciden")]
         public string RepeatContraseña { get; set; }
 
+        public string Usuario { get; set; }
+        public string Tipo { get; set; }
+        public string Estado { get; set; }
 
         public decimal MontoAñadido { get; set; }
         public string tipouser { get; set; }

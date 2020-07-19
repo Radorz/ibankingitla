@@ -83,8 +83,14 @@ namespace Ibanking_Itla.Controllers
             vm.Beneficiarios =  beneficiarios.Where(A => A.Idcreador.Trim() == usercreador.Id.Trim()).ToList();
             return View(vm);
         }
-        public IActionResult PagoExpress()
+        public async Task<IActionResult> PagoExpress()
         {
+            var users = await _userManager.FindByNameAsync(User.Identity.Name);
+
+            var Cuentas = await _productsrepository.GetAllCuentas(users.Id.Trim());
+
+
+
             return View();
         }
         public IActionResult Confirmacion()

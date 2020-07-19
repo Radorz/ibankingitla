@@ -52,7 +52,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-envelope"></i> </span>
                 </div>
-                <input asp-for="Cedula" class="form-control" placeholder="Cedula de Identidad" type="tel">
+                <input asp-for="Cedula" class="form-control" placeholder="Cedula de Identidad" type="number">
 
             </div>
             <div class="text-center">
@@ -85,7 +85,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-money"></i> </span>
                 </div>
-                <input asp-for="MontoInicial" class="form-control" placeholder="Monto inicial">
+                <input asp-for="MontoInicial" class="form-control" placeholder="Monto inicial" type="number">
             </div>
             <div class="text-center">
                 <span asp-validation-for="Contraseña" class="text-danger"></span>

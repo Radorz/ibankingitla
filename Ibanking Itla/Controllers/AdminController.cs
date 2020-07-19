@@ -121,6 +121,8 @@ namespace Ibanking_Itla.Controllers
             }
              return View();
         }
+        [HttpGet]
+
         public async Task<IActionResult> Edit(string id)
         {
            var user= await _adminrepository.GetbyIdNew(id);
@@ -151,6 +153,17 @@ namespace Ibanking_Itla.Controllers
 
 
             return View(vm);
+        }
+        [HttpPost]
+        public async Task<IActionResult> Edit(EditViewModel vm)
+        {
+            var vms = _mapper.Map<Users>(vm);
+            var balance = await _productsrepository.GetAllCuentas(vms.Id.Trim());
+            var cuenta = balance.FirstOrDefault(a => a.Tipo.Trim() == "Principal");
+            cuenta.Balance = cuenta.Balance + vm.MontoAñadido;
+            await _adminrepository.Update(vms);
+            await _productsrepository.Update(cuenta);
+            return RedirectToAction("Management");
         }
         [HttpPost]
         public async Task<IActionResult> DeleteUser(string id)
