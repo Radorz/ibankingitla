@@ -199,8 +199,9 @@ C:\Users\User\Desktop\ibankingitla\Ibanking Itla\obj\Debug\netcoreapp3.1\Ibankin
 C:\Users\User\Desktop\ibankingitla\Ibanking Itla\obj\Debug\netcoreapp3.1\staticwebassets\Ibanking Itla.StaticWebAssets.Manifest.cache
 C:\Users\User\Desktop\ibankingitla\Ibanking Itla\obj\Debug\netcoreapp3.1\staticwebassets\Ibanking Itla.StaticWebAssets.xml
 C:\Users\User\Desktop\ibankingitla\Ibanking Itla\obj\Debug\netcoreapp3.1\Ibanking Itla.genruntimeconfig.cache
-C:\Users\User\Desktop\ibankingitla\Ibanking Itla\obj\Debug\netcoreapp3.1\Razor\Views\Pagos\Confirmacion.cshtml.g.cs
 C:\Users\User\Desktop\ibankingitla\Ibanking Itla\obj\Debug\netcoreapp3.1\Razor\Views\Pagos\PagoBeneficiario.cshtml.g.cs
 C:\Users\User\Desktop\ibankingitla\Ibanking Itla\obj\Debug\netcoreapp3.1\Razor\Views\Pagos\PagoExpress.cshtml.g.cs
 C:\Users\User\Desktop\ibankingitla\Ibanking Itla\obj\Debug\netcoreapp3.1\Razor\Views\Pagos\PagoPrestamo.cshtml.g.cs
 C:\Users\User\Desktop\ibankingitla\Ibanking Itla\obj\Debug\netcoreapp3.1\Razor\Views\Pagos\TarjetaCredito.cshtml.g.cs
+C:\Users\User\Desktop\ibankingitla\Ibanking Itla\obj\Debug\netcoreapp3.1\Razor\Views\Pagos\ConfirmacionTransferencia.cshtml.g.cs
+C:\Users\User\Desktop\ibankingitla\Ibanking Itla\obj\Debug\netcoreapp3.1\Razor\Views\Pagos\ConfirmacionPago.cshtml.g.cs

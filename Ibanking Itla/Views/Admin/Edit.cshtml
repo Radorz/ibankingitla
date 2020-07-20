@@ -73,7 +73,7 @@
                             <div class="input-group-prepend">
                                 <span class="input-group-text"> <i class="fa fa-money"></i> </span>
                             </div>
-                            <input asp-for="MontoAñadido" class="form-control" placeholder="Añadirbalance" type="number">
+                            <input asp-for="MontoAñadido" class="form-control" placeholder="Añadirbalance" type="number" value="">
                         </div>
                     }
                     <div class="text-center">
@@ -261,7 +261,7 @@
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingthree" data-parent="#accordion">
                     <a class="btn-link" href="#" data-toggle="modal" data-target="#exampleModal2" data-id="@Model.Id">+ Añadir Tarjeta de Credito</a>
                     <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                        <form asp-action="AddBeneficiarios" method="post">
+                        <form asp-action="AddTarjeta" method="post">
 
                             <div class="modal-dialog" role="document">
                                 <div class="modal-content">
@@ -310,24 +310,38 @@
                                 </tr>
                             </thead>
                             <tbody>
+
                                 @foreach (var item in Model.Tarjetas)
                                 {
-                                    var balance = item.Balance.ToString("C");
+
+                                    var balancecorte = item.Balance.ToString("C");
                                     var Limite = item.LimiteTarjeta.ToString("C");
-                                    var balancecorte = (item.LimiteTarjeta - item.Balance).ToString("C");
-                                    var borrar2 = (item.LimiteTarjeta - item.Balance);
+                                    var balance = (item.LimiteTarjeta - item.Balance).ToString("C");
+                                    var borrar2 = item.Balance;
+                                    string modal = "";
 
-                                    <tr class="text-center">
 
-                                        <td>@Html.DisplayFor(modelItem => item.Id)</td>
-                                        <td>@Html.DisplayFor(modelItem => balance)</td>
-                                        <td>@Html.DisplayFor(modelItem => balancecorte)</td>
+                                        <tr class="text-center">
 
-                                        <td>@Html.DisplayFor(modelItem => Limite)</td>
-                                        <td>
-                                            <a href="#" data-toggle="modal" data-target="#exampleModal4" data-id="@item.Id"><i class="fa fa-trash" aria-hidden="true" style="color:red "></i></a>
-                                            @if (decimal.ToDouble(borrar2)  == 0.00)
-                                            {
+                                            <td>@Html.DisplayFor(modelItem => item.Id)</td>
+                                            <td>@Html.DisplayFor(modelItem => balance)</td>
+                                            <td>@Html.DisplayFor(modelItem => balancecorte)</td>
+
+                                            <td>@Html.DisplayFor(modelItem => Limite)</td>
+                                            <td>
+                                               @if (decimal.ToDouble(borrar2) == 0.0)
+                                                {
+                                                modal="#exampleModal4";
+
+                                                }
+                                                else {
+                                                modal="#exampleModal7";
+
+                                                }
+
+
+                                                <a href="#" data-toggle="modal" data-target=@modal data-id="@item.Id"><i class="fa fa-trash" aria-hidden="true" style="color:red "></i></a>
+
                                                 <div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <form asp-action="deleteProduct" method="post">
 
@@ -347,7 +361,7 @@
                                                                 </div>
                                                                 <div class="modal-footer">
                                                                     <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancelar</button>
-                                                                    <button type="submit" class="btn btn-primary">Proceder</button>
+                                                                    <button type="submit" class="btn btn-primary">Procesar</button>
 
                                                                 </div>
 
@@ -356,11 +370,7 @@
                                                     </form>
 
                                                 </div>
-                                            }
-                                            else
-                                            {
-
-                                                <div class="modal fade" id="exampleModal4" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                                <div class="modal fade" id="exampleModal7" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <form asp-action="deleteProduct" method="post">
 
                                                         <div class="modal-dialog" role="document">
@@ -388,9 +398,11 @@
 
                                                 </div>
 
-                                            }
-                                        </td>
-                                    </tr>
+                                            </td>
+
+                                        </tr>
+
+                                    
                                 }
 
                             </tbody>
@@ -481,7 +493,8 @@
                                 {
                                     var Monto = item.MontoPrestamo.ToString("C");
                                     var Pendiente = (item.MontoPrestamo - item.Balance).ToString("C");
-                                    var borrar2 = item.MontoPrestamo - item.Balance;
+                                    var borrar3 = item.MontoPrestamo - item.Balance;
+                                    string modal = "";
 
                                     <tr class="text-center">
 
@@ -489,11 +502,20 @@
                                         <td>@Html.DisplayFor(modelItem => Monto)</td>
                                         <td>@Html.DisplayFor(modelItem => Pendiente)</td>
                                         <td>
-                                            <a href="#" data-toggle="modal" data-target="#exampleModal5" data-id="@item.Id"><i class="fa fa-trash" aria-hidden="true" style="color:red "></i></a>
-                                            @if (decimal.ToDouble(borrar2) == 0.00)
+                                            @if (decimal.ToDouble(borrar3) == 0.0)
                                             {
+                                                modal = "#exampleModal5";
+
+                                            }
+                                            else
+                                            {
+                                                modal = "#exampleModal8";
+
+                                            }
+                                            <a href="#" data-toggle="modal" data-target=@modal data-id="@item.Id"><i class="fa fa-trash" aria-hidden="true" style="color:red "></i></a>
+                                           
                                                 <div class="modal fade" id="exampleModal5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                                    <form asp-action="deleteProduct"  method="post">
+                                                    <form asp-action="deleteProduct" method="post">
 
                                                         <div class="modal-dialog" role="document">
                                                             <div class="modal-content">
@@ -520,11 +542,8 @@
                                                     </form>
 
                                                 </div>
-                                            }
-                                            else
-                                            {
-
-                                                <div class="modal fade" id="exampleModal5" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                           
+                                                <div class="modal fade" id="exampleModal8" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                     <form asp-action="deleteProduct" method="post">
 
                                                         <div class="modal-dialog" role="document">
@@ -552,7 +571,7 @@
 
                                                 </div>
 
-                                            }
+                                            
                                         </td>
                                     </tr>
                                 }

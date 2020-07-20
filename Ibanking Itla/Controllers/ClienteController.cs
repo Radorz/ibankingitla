@@ -63,8 +63,8 @@ namespace Ibanking_Itla.Controllers
             }
             foreach (var item in vm.Tarjetas)
             {
-                vm.DisponibleTarjeta = vm.BalanceTarjeta + item.Balance;
-                vm.BalanceTarjeta = vm.BalanceTarjeta + (item.LimiteTarjeta - item.Balance);
+                vm.DisponibleTarjeta = vm.DisponibleTarjeta + (item.LimiteTarjeta - item.Balance);
+                vm.BalanceTarjeta = vm.BalanceTarjeta + item.Balance;
 
             }
 
@@ -93,23 +93,7 @@ namespace Ibanking_Itla.Controllers
 
             return View();
         }
-        public IActionResult Confirmacion()
-        {
-            return View();
-        }
-        public IActionResult TarjetaCredito()
-        {
-            return View();
-        }
-        public IActionResult PagoPrestamo()
-        {
-            return View();
-        }
-        public IActionResult PagoBeneficiario()
-        {
-            return View();
-        }
-
+      
         [HttpPost]
              public async Task<IActionResult> Addbenefi(BeneficiariosViewModel vm)
         {
@@ -151,9 +135,9 @@ namespace Ibanking_Itla.Controllers
             }
             var usercreador = await _userManager.FindByNameAsync(User.Identity.Name);
             var beneficiarios = await _beneficiariosrepository.GetAll();
-            var Beneficiarios = beneficiarios.FirstOrDefault(A =>( A.Idcreador.Trim() == usercreador.Id.Trim()&& A.NoCuenta== newbeneficiario.ToString().Trim()));
+            var Beneficiarios = beneficiarios.FirstOrDefault(A =>( A.Idcreador.Trim() == usercreador.Id.Trim()&& A.NoCuenta.Trim()== newbeneficiario.ToString().Trim()));
            
-            if (beneficiarios!= null)
+            if (Beneficiarios!= null)
             {
                 return Json($"Ya tienes esta cuenta agregada.");
 

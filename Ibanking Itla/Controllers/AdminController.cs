@@ -110,6 +110,7 @@ namespace Ibanking_Itla.Controllers
                             productentity.Idusuario = user.Id;
                             productentity.Idtipo = 1;
                             productentity.Tipo = "Principal";
+                            productentity.Balance = vm.MontoInicial;
 
                             await _productsrepository.Add(productentity);
 
@@ -132,7 +133,6 @@ namespace Ibanking_Itla.Controllers
             vm.Ahorros = await _productsrepository.GetAllCuentas(id);
             vm.Tarjetas = await _productsrepository.GetAllTarjetas(id);
             vm.Prestamos = await _productsrepository.GetAllPrestamos(id);
-
             foreach (var item in vm.Ahorros)
             {
                 vm.BalanceCuentaAhorro = vm.BalanceCuentaAhorro + item.Balance;
@@ -140,8 +140,9 @@ namespace Ibanking_Itla.Controllers
             }
               foreach (var item in vm.Tarjetas)
             {
-                vm.DisponibleTarjeta = vm.BalanceTarjeta + item.Balance;
-                vm.BalanceTarjeta = vm.BalanceTarjeta + (item.LimiteTarjeta - item.Balance);
+               
+                vm.DisponibleTarjeta =vm.DisponibleTarjeta + (item.LimiteTarjeta - item.Balance);
+                vm.BalanceTarjeta = vm.BalanceTarjeta + item.Balance;
 
             }
 
@@ -150,7 +151,7 @@ namespace Ibanking_Itla.Controllers
                 vm.BalancePrestamo = vm.BalancePrestamo + (item.MontoPrestamo - item.Balance);
 
             }
-
+            
 
             return View(vm);
         }
@@ -230,13 +231,16 @@ namespace Ibanking_Itla.Controllers
         {
             var productentity = new ProductosUsers();
             productentity.Id = DateTime.Now.ToString("HHyfffmm");
-            productentity.Idusuario = id;
+            productentity.Idusuario = id.Trim();
             productentity.Idtipo = 2;
             productentity.Tipo = "Deuda";
             productentity.Balance = 0;
             productentity.LimiteTarjeta = 0;
             productentity.MontoPrestamo = MontonewPrestamo;
-
+            var user = await _productsrepository.GetAllCuentas(productentity.Idusuario);
+            var principal = user.FirstOrDefault(a => a.Tipo.Trim() == "Principal");
+            principal.Balance = principal.Balance + MontonewPrestamo;
+            await _productsrepository.Update(principal);
             await _productsrepository.Add(productentity);
 
             return RedirectToAction("Edit", new { id = id });

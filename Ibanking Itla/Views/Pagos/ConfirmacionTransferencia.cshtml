@@ -1,0 +1,74 @@
+﻿@model ViewModels.ConfirmacionViewModel
+@{
+
+    ViewData["Title"] = "Confirmacion";
+    Layout = "~/Views/Shared/_ClienteLayout.cshtml";
+    ViewData["Usuario"] = User.Identity.Name.Trim();
+
+}
+<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.0.8/css/all.css">
+<p class="text-primary h4" > Confirmacion de Transferencia</p>
+<p class="text-muted ml-3">
+    Confirmación de proceso
+</p>
+
+<div class="card bg-light">
+    <div class="card-header bg-primary text-light text-center">
+        <a asp-action="Index" asp-controller="Cliente" class="btn btn-success">Volver</a>
+        Transferencia
+    </div>
+    <article class="card-body mx-auto" style="width: 400px;">
+        <form method="post">
+            <div class="text-center">
+                <span class="text-danger"></span>
+                <label>No. Producto Origen</label>
+
+            </div>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-address-card"></i> </span>
+                </div>
+
+                <input asp-for="Corigen" class="form-control"   readonly>
+            </div>
+            <div class="text-center">
+                <span class="text-danger"></span>
+                <label>No. Producto Destino</label>
+
+            </div>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-address-card"></i> </span>
+                </div>
+                <input asp-for="Cdestino" class="form-control" readonly>
+            </div>
+            <div class="text-center">
+                <span class="text-danger"></span>
+                <label>Monto</label>
+
+            </div>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-money"></i> </span>
+                </div>
+                <input asp-for="Montopuro" class="form-control" value="@Model.Montopuro" type="hidden">
+                <input asp-for="Monto" class="form-control" value="@Model.Montopuro.ToString("C")" readonly>
+            </div>
+            <div class="text-center">
+                <span class="text-danger"></span>
+                <label>Nombre beneficiario</label>
+
+            </div>
+            <div class="form-group input-group">
+                <div class="input-group-prepend">
+                    <span class="input-group-text"> <i class="fa fa-money"></i> </span>
+                </div>
+                <input asp-for="beneficiario" class="form-control" readonly>
+            </div>
+            <div class="form-group">
+                <button type="submit" class="btn btn-primary btn-block">Transferir</button>
+            </div>
+
+        </form>
+    </article>
+</div>

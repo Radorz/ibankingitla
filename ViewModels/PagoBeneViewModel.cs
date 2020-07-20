@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace ViewModels
 {
-    public class ExpressViewModel
+    public class PagoBeneViewModel
     {
 
         public List<string> Cuentas { get; set; }
@@ -16,10 +16,13 @@ namespace ViewModels
         [Required(ErrorMessage = "Es necesario una cuenta de donde Transferir")]
         public string Corigen { get; set; }
 
-        [Remote(action: "VerifyAccount", controller: "Pagos")]
+        
+        public List<string> Cuentasdestino { get; set; }
+
         [Display(Name = "Cuenta Destino")]
         [Required(ErrorMessage = "La Cuenta a depositar es requerida")]
-        public int Cdestino { get; set; }
+        public string Cdestino { get; set; }
+
 
         [Remote(action: "VerifyMoney", controller: "Pagos",AdditionalFields = nameof(Corigen))]
         [Display(Name = "Monto a Transferir")]

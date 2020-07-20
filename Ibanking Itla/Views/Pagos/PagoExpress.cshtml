@@ -15,18 +15,18 @@
 </p>
 <div class="card bg-light">
     <div class="card-header bg-primary text-light text-center">
-        <a asp-action="Index" class="btn btn-success">Volver</a>
+        <a asp-action="Index" asp-controller="Cliente" class="btn btn-success">Volver</a>
         Pago Express
     </div>
     <article class="card-body mx-auto" style="width: 400px;">
-        <form method="post">
+        <form asp-action="PagoExpress" method="post">
             <div class="text-center"> <span asp-validation-for="Corigen" class="text-danger"></span></div>
 
             <div class="form-group input-group">
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-id-badge"></i> </span>
                 </div>
-                <select asp-for="Corigen" asp-items="@(new  SelectList(Model.Cuentas))" class="custom-select" onchange="usuario(this)">
+                <select asp-for="Corigen" asp-items="@(new  SelectList(Model.Cuentas))" class="custom-select" >
                     <option selected>Cuenta Origen</option>
 
                 </select>
@@ -39,7 +39,7 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-address-card"></i> </span>
                 </div>
-                <input asp-for="Cdestino" class="form-control" placeholder="No. Cuenta Destino">
+                <input asp-for="Cdestino" class="form-control" placeholder="No. Cuenta Destino" type="number"  value="">
             </div>
             <div class="text-center">
                 <span asp-validation-for="Monto" class="text-danger"></span>
@@ -48,12 +48,12 @@
                 <div class="input-group-prepend">
                     <span class="input-group-text"> <i class="fa fa-money"></i> </span>
                 </div>
-                <input asp-for="Monto" class="form-control" placeholder="Monto" type="number" value="">
+                <input asp-for="Monto" class="form-control" placeholder="Monto" type="number"  value="">
             </div>
 
             <input type="hidden" value="Inactivo" />
             <div class="form-group">
-                <a asp-action="Confirmacion" class="btn btn-primary btn-block">Siguiente</a>
+                <button type="submit"  class="btn btn-primary btn-block">Siguiente</button>
             </div>
 
         </form>

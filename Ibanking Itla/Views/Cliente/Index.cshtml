@@ -108,10 +108,9 @@
                     <tbody>
                         @foreach (var item in Model.Tarjetas)
                         {
-                            var balance = item.Balance.ToString("C");
+                            var balancecorte = item.Balance.ToString("C");
                             var Limite = item.LimiteTarjeta.ToString("C");
-                            var balancecorte = (item.LimiteTarjeta - item.Balance).ToString("C");
-                            var borrar2 = (item.LimiteTarjeta - item.Balance);
+                            var balance = (item.LimiteTarjeta - item.Balance).ToString("C");
 
                             <tr class="text-center">
 
@@ -171,9 +170,9 @@
                     <tbody>
                         @foreach (var item in Model.Prestamos)
                         {
+                            if ((item.MontoPrestamo - item.Balance) > 0) { 
                             var Monto = item.MontoPrestamo.ToString("C");
                             var Pendiente = (item.MontoPrestamo - item.Balance).ToString("C");
-                            var borrar2 = item.MontoPrestamo - item.Balance;
 
                             <tr class="text-center">
 
@@ -181,6 +180,7 @@
                                 <td>@Html.DisplayFor(modelItem => Monto)</td>
                                 <td>@Html.DisplayFor(modelItem => Pendiente)</td>
                             </tr>
+                            }
                         }
                     </tbody>
                 </table>

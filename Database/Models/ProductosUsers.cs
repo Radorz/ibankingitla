@@ -19,6 +19,7 @@ namespace Database.Models
         public decimal LimiteTarjeta { get; set; }
         public decimal MontoPrestamo { get; set; }
 
+
         public virtual ICollection<Transacciones> TransaccionesCuentadestinoNavigation { get; set; }
         public virtual ICollection<Transacciones> TransaccionesCuentaorigenNavigation { get; set; }
     }
