@@ -19,7 +19,7 @@ namespace ViewModels
         [Remote(action: "VerifyAccount", controller: "Pagos")]
         [Display(Name = "Cuenta Destino")]
         [Required(ErrorMessage = "La Cuenta a depositar es requerida")]
-        public int Cdestino { get; set; }
+        public string Cdestino { get; set; }
 
         [Remote(action: "VerifyMoney", controller: "Pagos",AdditionalFields = nameof(Corigen))]
         [Display(Name = "Monto a Transferir")]

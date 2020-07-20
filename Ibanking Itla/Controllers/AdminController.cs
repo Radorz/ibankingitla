@@ -170,7 +170,10 @@ namespace Ibanking_Itla.Controllers
         public async Task<IActionResult> DeleteUser(string id)
         {
 
+            await _productsrepository.deleteallproductuser(id);
             await _adminrepository.Deletenew(id);
+            await _userManager.DeleteAsync(await _userManager.FindByIdAsync(id.Trim()));
+            
 
             return View();
         }
@@ -185,7 +188,10 @@ namespace Ibanking_Itla.Controllers
 
 
             }
-            await _userManager.SetLockoutEndDateAsync(user, DateTime.FromOADate(365*200));
+            else
+            {
+                await _userManager.SetLockoutEndDateAsync(user, DateTime.FromOADate(365 * 200));
+            }
 
             await _adminrepository.statechange(id);
 

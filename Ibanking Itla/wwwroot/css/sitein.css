@@ -129,9 +129,6 @@ a.article, a.article:hover {
 }
 
 
-/* ---------------------------------------------------
-    MEDIAQUERIES
------------------------------------------------------ */
 
 @media only screen and (max-width: 768px) {
     .img-2 {

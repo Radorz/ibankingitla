@@ -61,7 +61,7 @@ namespace Ibanking_Itla
                 // Lockout settings.
                 options.Lockout.AllowedForNewUsers = true;
                 options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(10);
-                options.Lockout.MaxFailedAccessAttempts = 3;
+                options.Lockout.MaxFailedAccessAttempts = 10;
                 
 
                 // User settings.

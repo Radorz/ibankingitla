@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Repository.Repository;
 using ViewModels;
 
 namespace Ibanking_Itla.Controllers
@@ -13,14 +14,18 @@ namespace Ibanking_Itla.Controllers
         private readonly UserManager<IdentityUser> _userManager;
         private readonly SignInManager<IdentityUser> _signInManager;
         private readonly RoleManager<IdentityRole> _role;
+        private readonly AdminRepository _adminrepository;
+
 
         public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager,
-            RoleManager<IdentityRole> role)
+            RoleManager<IdentityRole> role, AdminRepository adminrepository)
         {
 
             _userManager = userManager;
             _signInManager = signInManager;
             _role = role;
+            this._adminrepository = adminrepository;
+
         }
         [HttpGet]
         public async Task <IActionResult> Login()
@@ -59,6 +64,7 @@ namespace Ibanking_Itla.Controllers
                     ModelState.AddModelError("Error", "Esta cuenta ha sido Inactivada");
                     return View(vm);
                 }
+
                 if (resultado.Succeeded)
                 {
                    
@@ -76,7 +82,19 @@ namespace Ibanking_Itla.Controllers
 
                     }
                  }
-                ModelState.AddModelError("UserOrPasswordInvalid", "El usuario o contraseña es invalido");
+                var userforlock = await _userManager.FindByNameAsync(vm.User);
+                if (userforlock.AccessFailedCount == 3 && await _userManager.IsInRoleAsync(userforlock, "Cliente"))
+                {
+
+                    await _userManager.SetLockoutEndDateAsync(userforlock, DateTime.FromOADate(365 * 200));
+                    await _userManager.ResetAccessFailedCountAsync(userforlock);
+                    var state = await _adminrepository.GetbyIdNew(userforlock.Id);
+                    state.Estado = "Inactivo";
+                    await _adminrepository.Update(state);
+
+                }
+ 
+                 ModelState.AddModelError("UserOrPasswordInvalid", "El usuario o contraseña es invalido");
             }
             return View(vm);
         }

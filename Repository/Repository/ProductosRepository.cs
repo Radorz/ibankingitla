@@ -19,12 +19,12 @@ namespace Repository.Repository
         {
 
             return await base._context.ProductosUsers.CountAsync();
- }
+        }
 
         public async Task<List<ProductosUsers>> GetAllCuentas(string id)
         {
 
-            return await base._context.ProductosUsers.Where(a=>(a.Idtipo==1)&&(a.Idusuario==id)).ToListAsync();
+            return await base._context.ProductosUsers.Where(a => (a.Idtipo == 1) && (a.Idusuario == id)).ToListAsync();
         }
         public async Task<List<ProductosUsers>> GetAllCuentaForVerify()
         {
@@ -34,7 +34,7 @@ namespace Repository.Repository
         public async Task<List<ProductosUsers>> GetAllTarjetas(string id)
         {
 
-            return await base._context.ProductosUsers.Where(a =>( a.Idtipo == 3) && (a.Idusuario == id)).ToListAsync();
+            return await base._context.ProductosUsers.Where(a => (a.Idtipo == 3) && (a.Idusuario == id)).ToListAsync();
         }
         public async Task<List<ProductosUsers>> GetAllPrestamos(string id)
         {
@@ -57,11 +57,25 @@ namespace Repository.Repository
 
 
         }
-        public async Task<ProductosUsers> GetbyIdnew(int id)
+        public async Task<ProductosUsers> GetbyIdnew(string id)
         {
-            return await _context.Set<ProductosUsers>().FindAsync(id.ToString());
+            return  _context.Set<ProductosUsers>().FirstOrDefault(a=> a.Id.Trim()==id.ToString().Trim());
         }
+        public async Task<List<ProductosUsers>> deleteallproductuser (string id)
+        {
+             var products = await base._context.ProductosUsers.Where(a => a.Idusuario.Trim() == id.Trim()).ToListAsync();
+            foreach(var product in products)
+            {
 
+                _context.Set<ProductosUsers>().Remove(product);
+
+
+            }
+            await _context.SaveChangesAsync();
+
+            return products;
+        }
+       
 
     }
 }

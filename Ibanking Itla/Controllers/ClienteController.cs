@@ -98,7 +98,7 @@ namespace Ibanking_Itla.Controllers
              public async Task<IActionResult> Addbenefi(BeneficiariosViewModel vm)
         {
             var usercreador = await _userManager.FindByNameAsync(User.Identity.Name);
-            var account = await _productsrepository.GetbyIdnew(vm.newbeneficiario);
+            var account = await _productsrepository.GetbyIdnew(vm.newbeneficiario.ToString());
             var dueño = await _adminrepository.GetbyIdNew(account.Idusuario.Trim());
             var beneficiario = new Beneficiarios();
             beneficiario.Nombre = dueño.Nombre.Trim();

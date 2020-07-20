@@ -68,7 +68,7 @@ namespace Ibanking_Itla.Controllers
                 return RedirectToAction("ConfirmacionTransferencia", new { destino = vm.Cdestino, monto = vm.Monto, origen =vm.Corigen});
         }
         [HttpGet]
-        public async Task<IActionResult> ConfirmacionTransferencia(int destino, decimal monto, string origen)
+        public async Task<IActionResult> ConfirmacionTransferencia(string destino, decimal monto, string origen)
         {
             
             var Cuenta = await _productsrepository.GetbyIdnew(destino);
@@ -84,8 +84,8 @@ namespace Ibanking_Itla.Controllers
         [HttpPost]
         public async Task<IActionResult> ConfirmacionTransferencia(ConfirmacionViewModel vm)
         {
-            var Cuentad = await _productsrepository.GetbyIdnew(Convert.ToInt32(vm.Cdestino.Substring(0, 9)));
-            var Cuentao = await _productsrepository.GetbyIdnew(Convert.ToInt32(vm.Corigen.Substring(0, 9)));
+            var Cuentad = await _productsrepository.GetbyIdnew(vm.Cdestino.Substring(0, 9));
+            var Cuentao = await _productsrepository.GetbyIdnew(vm.Corigen.Substring(0, 9));
 
             var users = await _adminrepository.GetbyIdNew(Cuentad.Idusuario.Trim());
             Cuentao.Balance = Cuentao.Balance - vm.Montopuro;
@@ -186,7 +186,7 @@ namespace Ibanking_Itla.Controllers
         }
 
         [HttpGet]
-        public async Task<IActionResult> ConfirmacionPago(int destino, decimal monto, string origen)
+        public async Task<IActionResult> ConfirmacionPago(string destino, decimal monto, string origen)
         {
 
             var Cuenta = await _productsrepository.GetbyIdnew(destino);
@@ -210,8 +210,8 @@ namespace Ibanking_Itla.Controllers
         [HttpPost]
         public async Task<IActionResult> ConfirmacionPago(ConfirmacionViewModel vm)
         {
-            var Cuentad = await _productsrepository.GetbyIdnew(Convert.ToInt32(vm.Cdestino.Substring(0, 9)));
-            var Cuentao = await _productsrepository.GetbyIdnew(Convert.ToInt32(vm.Corigen.Substring(0, 9)));
+            var Cuentad = await _productsrepository.GetbyIdnew(vm.Cdestino.Substring(0, 9));
+            var Cuentao = await _productsrepository.GetbyIdnew(vm.Corigen.Substring(0, 9));
 
             if (Cuentad.Idtipo == 3) { 
 
@@ -297,11 +297,11 @@ namespace Ibanking_Itla.Controllers
             return RedirectToAction("ConfirmacionTransferencia", new { destino = cdestino, monto = vm.Monto, origen = corigen });
         }
         [AcceptVerbs("GET", "POST")]
-        public async Task<IActionResult> VerifyAccount(int Cdestino)
+        public async Task<IActionResult> VerifyAccount(string Cdestino)
         {
 
             var account = await _productsrepository.GetAllCuentaForVerify();
-            var resul = account.FirstOrDefault(a => a.Id.Trim() == Cdestino.ToString().Trim());
+            var resul = account.FirstOrDefault(a => a.Id.Trim() == Cdestino.Trim());
             if (resul == null)
             {
                 return Json($"Esta cuenta no existe.");
@@ -314,7 +314,7 @@ namespace Ibanking_Itla.Controllers
         {
 
             var CuentaOrigen = Corigen.Substring(0, 9);
-            var cuenta = await _productsrepository.GetbyIdnew(Convert.ToInt32(CuentaOrigen));
+            var cuenta = await _productsrepository.GetbyIdnew(CuentaOrigen);
             if (cuenta.Balance >= Monto){
                 return Json(true);
 
@@ -330,8 +330,8 @@ namespace Ibanking_Itla.Controllers
             var CuentaCdestino = Cdestino.Substring(0, 9);
             var CuentaCorigen = Corigen.Substring(0, 9);
 
-         var cuentadestino = await _productsrepository.GetbyIdnew(Convert.ToInt32(CuentaCdestino));
-            var cuentaorigen = await _productsrepository.GetbyIdnew(Convert.ToInt32(CuentaCorigen));
+        var cuentadestino = await _productsrepository.GetbyIdnew(CuentaCdestino);
+            var cuentaorigen = await _productsrepository.GetbyIdnew(CuentaCorigen);
 
             if (cuentadestino.Idtipo == 3 && cuentadestino.Balance == 0)
             {
